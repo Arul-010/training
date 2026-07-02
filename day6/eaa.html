@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>hello world</title>
+</head>
+
+<body>
+    <h1>Hello, World!</h1>
+    <input type="text" onkeypress="keypress()">
+    <button onclick="msg()">Click Me!</button>
+    <button ondblclick="dclick()" id="input">Double Click Me!</button>
+    <h1 id="h1" onmouseover="mouseOver()" onmouseout="mouseOut()">hello</h1>
+    <button id="th">thoduda papom</button>
+
+</body>
+<script>
+    function msg() {
+        alert("vanakam da mapla");
+    }
+    function dclick() {
+        document.getElementById("input").innerHTML = "pothum da sami";
+    }
+    function mouseOver() {
+        document.getElementById("h1").style.color = "aqua";
+    }
+    function mouseOut() {
+        document.getElementById("h1").style.color = "black";
+    }
+    function keypress() {
+        alert("key pressed");
+    }
+    let button=document.getElementById("th");
+    button.addEventListener("click",function(){
+        alert("enna da thotuta");
+    });
+</script>
+
+</html>

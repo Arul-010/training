@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JavaScript DOM-To-DO app</title>
+        <style>
+            body{
+                font-family: Arial;
+                width: 350px;
+                margin: 30px auto;
+                text-align: center;
+            }
+            input{
+                width: 220px;
+                padding: 8px;
+                display: block;
+                margin: 0 auto 12px;
+            }
+            button{
+                padding: 8px 12px;
+                display: inline-block;
+            }
+            ul{
+                list-style: none;
+                padding: 0;
+                margin: 20px auto 0;
+                text-align: left;
+            }
+            li{
+                margin: 10px 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: #f8f8f8;
+                padding: 8px 12px;
+                border-radius: 6px;
+            }
+            li button{
+                margin-left: 12px;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 id="heading">My To-Do application</h2>
+        <input type="text" id="task" placeholder="Enter Task">
+        <button id="addBtn">Add Task</button>
+        <ul id="taskList"></ul>
+        <script>
+            const heading=document.getElementById('heading');
+            const taskInput=document.getElementById('task');
+            const addBtn=document.getElementById('addBtn');
+            const taskList=document.getElementById('taskList');
+            addBtn.addEventListener('click',addTask);
+            heading.addEventListener('mouseover',function(){
+                heading.innerHTML="JavaScript DOM Manipulation";
+            });
+            window.onload=function(){
+                let tasks=JSON.parse(localStorage.getItem('tasks')) || [];
+                tasks.forEach(function(task){
+                    createTask(task);
+                });
+            }
+            function addTask(){
+                const task = taskInput.value.trim();
+                if (task === ""){
+                    alert("Please enter a task!");
+                    return;
+                }
+                createTask(task);
+                let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+                tasks.push(task);
+                localStorage.setItem('tasks',JSON.stringify(tasks));
+                taskInput.value = "";
+            }
+            function createTask(task){
+                let li=document.createElement('li');
+                li.innerHTML=task +"";
+                let removeBtn=document.createElement('button');
+                removeBtn.innerHTML="Delete";
+                removeBtn.addEventListener("click",function(){
+                    li.remove();
+                    let tasks=JSON.parse(localStorage.getItem('tasks')) || [];
+                    tasks=tasks.filter(function(item){
+                        return item !== task;
+                    });
+                    localStorage.setItem('tasks',JSON.stringify(tasks));
+                });
+                li.appendChild(removeBtn);
+                taskList.appendChild(li);
+            }
+        </script>  
+    </body>  
+</html>

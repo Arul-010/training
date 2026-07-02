@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MasterClass — Learn web development: HTML, CSS and JavaScript.">
+    <title>MasterClass</title>
+    <link rel="icon" href="logologo.png" type="image/png">
+    <link rel="stylesheet" href="landing_page.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <main id="main-content">
+    <header id="home" class="site-header">
+        
+    <div class="container">
+        <div class="site-brand">
+            <img src="logologo.png" alt="The Masterclass Logo" width="52" style="border-radius:8px;">
+            <div>
+                <h1 style="font-size:18px;margin-bottom:4px;color:var(--bg);">The Masterclass</h1>
+                <p style="color:var(--bg);font-size:12px;">Practical courses to build modern web skills</p>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+        </ul>
+        <div class="auth-actions">
+            <a href="../day2/login_page.html" class="auth-btn">Login</a>
+            <a href="../day2/REG FORM.html" class="auth-btn register">Register</a>
+        </div>
+    </div>
+    </header>
+    <div class="welcome-banner" style="background:var(--light);padding:18px 20px;text-align:center;">
+        <p style="margin:0;font-size:16px;color:var(--text-dark);">Welcome to MasterClass — your immersive learning hub for HTML, CSS, JavaScript, Java, Python, and Database technologies.</p>
+    </div>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Learn to Code with Industry Experts</h1>
+                <p>Master HTML, CSS, JavaScript, Java, Python, and Databases through practical, project-based learning.</p>
+                <div class="hero-actions">
+                    <a href="#courses" class="cta-btn">Start Learning</a>
+                    <a href="#courses" class="cta-btn secondary">Browse Courses</a>
+                </div>
+            </div>
+            <aside aria-hidden="true">
+                <div style="background:var(--card);padding:18px;border-radius:12px;box-shadow:0 8px 24px rgba(11,31,106,0.08);">
+                    <h3 style="margin-bottom:8px;color:var(--text-dark);">Upcoming</h3>
+                    <p style="color:var(--muted);font-size:14px;margin-bottom:12px;">Next cohort starts July 2026 — limited seats.</p>
+                    <a href="#" class="cta-btn" id="join-waitlist">Join Waitlist</a>
+                    <div id="waitlist-notification" class="waitlist-notification" role="status" aria-live="polite"></div>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <section id="courses" class="features section-padded">
+        <div class="section-header">
+            <p class="eyebrow">Course Categories</p>
+            <h2>Explore our learning tracks</h2>
+        </div>
+        <div class="category-grid">
+            <a href="course-html-css.html" class="category-link">
+                <div class="icon-card">
+                    <span class="icon">🌐</span>
+                    <h3>HTML & CSS</h3>
+                    <p>Build beautiful websites.</p>
+                </div>
+            </a>
+            <a href="course-javascript.html" class="category-link">
+                <div class="icon-card">
+                    <span class="icon">⚡</span>
+                    <h3>JavaScript</h3>
+                    <p>Make websites interactive.</p>
+                </div>
+            </a>
+            <a href="course-java.html" class="category-link">
+                <div class="icon-card">
+                    <span class="icon">☕</span>
+                    <h3>Java</h3>
+                    <p>Object-Oriented Programming.</p>
+                </div>
+            </a>
+            <a href="course-python.html" class="category-link">
+                <div class="icon-card">
+                    <span class="icon">🐍</span>
+                    <h3>Python</h3>
+                    <p>Programming from beginner to advanced.</p>
+                </div>
+            </a>
+            <a href="course-database.html" class="category-link">
+                <div class="icon-card">
+                    <span class="icon">🗄</span>
+                    <h3>Database</h3>
+                    <p>Learn SQL and Database Design.</p>
+                </div>
+            </a>
+            <a href="course-fullstack.html" class="category-link">
+                <div class="icon-card">
+                    <span class="icon">🚀</span>
+                    <h3>Full Stack Projects</h3>
+                    <p>Build complete real-world applications.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="why" class="why-choose section-padded light-section">
+        <div class="section-header">
+            <p class="eyebrow">Why Choose MasterClass?</p>
+            <h2>Learn with confidence</h2>
+        </div>
+        <ul class="check-list">
+            <li>✔ Practical Projects</li>
+            <li>✔ Expert Trainers</li>
+            <li>✔ Beginner Friendly</li>
+            <li>✔ Certificate of Completion</li>
+            <li>✔ Interview Preparation</li>
+            <li>✔ Lifetime Access</li>
+        </ul>
+    </section>
+
+    <section id="roadmap" class="roadmap section-padded">
+        <div class="section-header">
+            <p class="eyebrow">Learning Path</p>
+            <h2>Step-by-step roadmap</h2>
+        </div>
+        <div class="roadmap-toggle-wrap">
+            <button class="roadmap-toggle" type="button" aria-expanded="false">View Roadmap</button>
+        </div>
+        <div class="roadmap-content">
+            <div class="roadmap-flow">
+                <div class="roadmap-step">HTML</div>
+                <div class="roadmap-arrow">➡️</div>
+                <div class="roadmap-step">CSS</div>
+                <div class="roadmap-arrow">➡️</div>
+                <div class="roadmap-step">JavaScript</div>
+                <div class="roadmap-arrow">➡️</div>
+                <div class="roadmap-step">Java / Python</div>
+                <div class="roadmap-arrow">➡️</div>
+                <div class="roadmap-step">Database</div>
+                <div class="roadmap-arrow">➡️</div>
+                <div class="roadmap-step">Projects</div>
+                <div class="roadmap-arrow">➡️</div>
+                <div class="roadmap-step">Career Ready</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="featured" class="featured-courses section-padded light-section">
+        <div class="section-header">
+            <p class="eyebrow">Featured Courses</p>
+            <h2>Courses designed for your success</h2>
+        </div>
+        <div class="featured-grid">
+            <div class="feature-card">
+                <h3>HTML Fundamentals</h3>
+                <p>⭐⭐⭐⭐⭐</p>
+            </div>
+            <div class="feature-card">
+                <h3>CSS Mastery</h3>
+                <p>⭐⭐⭐⭐⭐</p>
+            </div>
+            <div class="feature-card">
+                <h3>JavaScript Essentials</h3>
+                <p>⭐⭐⭐⭐⭐</p>
+            </div>
+            <div class="feature-card">
+                <h3>Java Programming</h3>
+                <p>Build backend and app skills.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Python Programming</h3>
+                <p>Data, automation, and web development.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Database Management</h3>
+                <p>Design, queries, and admin workflows.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="trainers" class="section-padded">
+        <div class="section-header">
+            <p class="eyebrow">Meet Our Trainers</p>
+            <h2>Expert mentors guiding every step</h2>
+        </div>
+        <div class="trainers">
+            <div class="trainer-card card">
+                <img src="useru.webp" alt="Siva" class="trainer-avatar">
+                <h4>Mandhana</h4>
+                <p>Lead Instructor — Web Development</p>
+            </div>
+            <div class="trainer-card card">
+                <img src="useru.webp" alt="Kishore" class="trainer-avatar">
+                <h4>Roman reigns</h4>
+                <p>Senior Mentor — Frontend Engineering</p>
+            </div>
+            <div class="trainer-card card">
+                <img src="useru.webp" alt="Ajith" class="trainer-avatar">
+                <h4>Suresh Raina</h4>
+                <p>Mentor — Full Stack Development</p>
+            </div>
+            <div class="trainer-card card">
+                <img src="useru.webp" alt="Vijay" class="trainer-avatar">
+                <h4>Virat Kohli</h4>
+                <p>Trainer — Backend & Database</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="stats" class="statistics section-padded light-section">
+        <div class="section-header">
+            <p class="eyebrow">Student Statistics</p>
+            <h2>Trusted by learners worldwide</h2>
+        </div>
+        <div class="stat-grid">
+            <div class="stat-card">
+                <span>500+</span>
+                <p>Students</p>
+            </div>
+            <div class="stat-card">
+                <span>10+</span>
+                <p>Courses</p>
+            </div>
+            <div class="stat-card">
+                <span>95%</span>
+                <p>Completion Rate</p>
+            </div>
+            <div class="stat-card">
+                <span>15+</span>
+                <p>Projects</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials section-padded">
+        <div class="section-header">
+            <p class="eyebrow">Student Reviews</p>
+            <h2>What our students say</h2>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card card">
+                <p class="rating">★★★★★</p>
+                <p>"The Java course helped me crack my first interview."</p>
+                <p class="review-author">— Rahul</p>
+            </div>
+            <div class="testimonial-card card">
+                <p class="rating">★★★★★</p>
+                <p>"Excellent hands-on projects."</p>
+                <p class="review-author">— Priya</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="batches" class="upcoming-batches section-padded light-section">
+        <div class="section-header">
+            <p class="eyebrow">Upcoming Batches</p>
+            <h2>Start learning this July</h2>
+        </div>
+        <div class="batch-grid">
+            <div class="batch-card card">
+                <h3>HTML & CSS</h3>
+                <p>July 10 · 4 Weeks</p>
+            </div>
+            <div class="batch-card card">
+                <h3>Java</h3>
+                <p>July 15 · 8 Weeks</p>
+            </div>
+            <div class="batch-card card">
+                <h3>Python</h3>
+                <p>July 20 · 6 Weeks</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="project-showcase section-padded">
+        <div class="section-header">
+            <p class="eyebrow">Project Showcase</p>
+            <h2>Build real student projects</h2>
+        </div>
+        <ul class="project-list">
+            <li>✔ Portfolio Website</li>
+            <li>✔ Calculator</li>
+            <li>✔ Weather App</li>
+            <li>✔ Student Management System</li>
+            <li>✔ E-commerce Website</li>
+            <li>✔ Banking System</li>
+        </ul>
+    </section>
+
+    <section id="faq" class="faq section-padded light-section">
+        <div class="section-header">
+            <p class="eyebrow">Frequently Asked Questions</p>
+            <h2>Common questions answered</h2>
+        </div>
+        <div class="faq-grid">
+            <div class="faq-item card">
+                <h4>Do I need coding experience?</h4>
+                <p>No prior experience is required — we start from the basics.</p>
+            </div>
+            <div class="faq-item card">
+                <h4>Will I receive a certificate?</h4>
+                <p>Yes, every completed course includes a certificate.</p>
+            </div>
+            <div class="faq-item card">
+                <h4>Are recordings available?</h4>
+                <p>All sessions are recorded and available for review.</p>
+            </div>
+            <div class="faq-item card">
+                <h4>Can I learn on mobile?</h4>
+                <p>Yes, our content is optimized for desktop and mobile.</p>
+            </div>
+            <div class="faq-item card">
+                <h4>Is there placement support?</h4>
+                <p>We offer interview prep and job-ready guidance.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact section-padded">
+        <div class="section-header">
+            <p class="eyebrow">Contact Section</p>
+            <h2>Get in touch</h2>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-card card">
+                <h4>📧 Email</h4>
+                <p>masterclassoff@masterclass.com</p>
+            </div>
+            <div class="contact-card card">
+                <h4>📞 Phone</h4>
+                <p>+91 697850412</p>
+            </div>
+            <div class="contact-card card">
+                <h4>📍 Address</h4>
+                <p>Covai, India</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="newsletter" class="newsletter section-padded light-section">
+        <div class="section-header">
+            <p class="eyebrow">Newsletter</p>
+            <h2>Stay Updated</h2>
+        </div>
+        <p class="newsletter-copy">Get notified about new courses.</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Email address" aria-label="Email address">
+            <button type="submit" class="cta-btn">Subscribe</button>
+        </form>
+    </section>
+
+    <section id="social-proof" class="social-proof section-padded">
+        <div class="social-proof-card card">
+            <h3>Trusted by 500+ Students</h3>
+            <p>⭐⭐⭐⭐⭐ 4.9 Rating</p>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const roadmapToggle = document.querySelector('.roadmap-toggle');
+            const roadmapContent = document.querySelector('.roadmap-content');
+            const joinWaitlistBtn = document.getElementById('join-waitlist');
+            const waitlistNotification = document.getElementById('waitlist-notification');
+            const challengeButtons = document.querySelectorAll('.challenge-btn');
+            const challengeSubmit = document.getElementById('challenge-submit');
+            const challengeResult = document.getElementById('challenge-result');
+            let selectedAnswer = null;
+
+            roadmapToggle?.addEventListener('click', () => {
+                const isVisible = roadmapContent.classList.toggle('visible');
+                roadmapToggle.textContent = isVisible ? 'Hide Roadmap' : 'View Roadmap';
+                roadmapToggle.setAttribute('aria-expanded', String(isVisible));
+            });
+
+            joinWaitlistBtn?.addEventListener('click', (event) => {
+                event.preventDefault();
+                waitlistNotification.textContent = 'You are added to the queue.';
+                waitlistNotification.classList.add('show');
+
+                clearTimeout(joinWaitlistBtn._hideTimer);
+                joinWaitlistBtn._hideTimer = setTimeout(() => {
+                    waitlistNotification.classList.remove('show');
+                }, 2200);
+            });
+
+            challengeButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    challengeButtons.forEach((btn) => btn.classList.remove('selected'));
+                    button.classList.add('selected');
+                    selectedAnswer = button.getAttribute('data-answer');
+                });
+            });
+
+            challengeSubmit?.addEventListener('click', () => {
+                if (!selectedAnswer) {
+                    challengeResult.textContent = 'Please select an option first.';
+                    challengeResult.className = 'challenge-result warning';
+                    return;
+                }
+
+                if (selectedAnswer === 'B') {
+                    challengeResult.textContent = 'Right! The output is 55.';
+                    challengeResult.className = 'challenge-result success';
+                } else {
+                    challengeResult.textContent = 'Wrong! Try again.';
+                    challengeResult.className = 'challenge-result error';
+                }
+            });
+        });
+    </script>
+
+    <section id="badges" class="badges section-padded light-section">
+        <div class="section-header">
+            <p class="eyebrow">Achievement Badges</p>
+            <h2>Earn skills that matter</h2>
+        </div>
+        <div class="badge-grid">
+            <div class="badge-card">🏆 Practical Learning</div>
+            <div class="badge-card">🎓 Certified Courses</div>
+            <div class="badge-card">💻 Real Projects</div>
+            <div class="badge-card">🚀 Career Guidance</div>
+            <div class="badge-card">👨‍🏫 Expert Trainers</div>
+        </div>
+    </section>
+
+    <section id="challenge" class="challenge section-padded">
+        <div class="section-header">
+            <p class="eyebrow">Interactive Coding Challenge</p>
+            <h2>Guess the Output</h2>
+        </div>
+        <div class="challenge-card card">
+            <p><strong>System.out.println(5 + "5");</strong></p>
+            <div class="challenge-options" role="list">
+                <button type="button" class="challenge-btn" data-answer="A">A. 10</button>
+                <button type="button" class="challenge-btn" data-answer="B">B. 55</button>
+                <button type="button" class="challenge-btn" data-answer="C">C. Error</button>
+            </div>
+            <button type="button" class="cta-btn" id="challenge-submit">Check Answer</button>
+            <p id="challenge-result" class="challenge-result" aria-live="polite"></p>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-about">
+                <h3>About MasterClass</h3>
+                <p>MasterClass supports learners with hands-on web development and programming courses. Build practical skills through interactive lessons, real projects, and expert guidance.</p>
+            </div>
+            <div class="footer-nav">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="http://127.0.0.1:5500/day3/landing_page.html#home">Home</a></li>
+                    <li><a href="http://127.0.0.1:5500/day3/landing_page.html#courses">Courses</a></li>
+                    <li><a href="http://127.0.0.1:5500/day3/contact.html">Contact</a></li>
+                    <li><a href="http://127.0.0.1:5500/day3/aboutus.html">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <ul class="social-links">
+                    <li><a href="http://127.0.0.1:5500/day3/landing_page.html#" target="_blank" rel="noopener">Instagram</a></li>
+                    <li><a href="http://127.0.0.1:5500/day3/landing_page.html#" target="_blank" rel="noopener">Facebook</a></li>
+                    <li><a href="http://127.0.0.1:5500/day3/landing_page.html#" target="_blank" rel="noopener">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MasterClass. Designed for modern learners.</p>
+        </div>
+    </footer>
+    </main>
+</body>
+</html>

@@ -1,0 +1,887 @@
+/* ==============================
+   CARTOON & COMIC CALCULATOR THEME
+   ============================== */
+
+.calc-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==============================
+   Comic Action / Speed Lines
+   ============================== */
+.speed-lines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.1s;
+  background:
+    repeating-conic-gradient(
+      rgba(255, 87, 34, 0.08) 0deg 4deg,
+      transparent 4deg 15deg
+    );
+  mix-blend-mode: multiply;
+}
+
+.speed-lines.active {
+  opacity: 1;
+  animation: speed-flash 0.3s ease-out forwards;
+}
+
+@keyframes speed-flash {
+  0%   { opacity: 0.9; transform: scale(1.3); }
+  100% { opacity: 0; transform: scale(1); }
+}
+
+/* ==============================
+   Floating Cartoon Elements
+   ============================== */
+.floating-elements {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.float-item {
+  position: absolute;
+  font-size: 2.8rem;
+  opacity: 0.3;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));
+}
+
+.float-star {
+  top: 10%;
+  left: 20%;
+  transform: rotate(-15deg);
+}
+
+.float-cloud {
+  top: 75%;
+  left: 22%;
+  transform: rotate(10deg);
+}
+
+.float-lightning {
+  top: 18%;
+  right: 22%;
+  transform: rotate(20deg);
+}
+
+.float-balloon {
+  bottom: 22%;
+  right: 20%;
+  transform: rotate(-5deg);
+}
+
+.float-sparkle {
+  top: 48%;
+  left: 6%;
+  transform: scale(0.9) rotate(25deg);
+}
+
+/* Bouncy attack animation for mascots */
+@keyframes mascot-bounce-attack {
+  0% { transform: scale(1) translateY(0); }
+  30% { transform: scale(1.25, 0.8) translateY(12px); }
+  50% { transform: scale(0.85, 1.25) translateY(-45px) rotate(12deg); }
+  75% { transform: scale(1.05, 0.95) translateY(-5px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+.cartoon-mascot.attack {
+  animation: mascot-bounce-attack 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* ==============================
+   Calculator Card — Retro Comic Panel Style
+   ============================= */
+.calculator {
+  position: relative;
+  z-index: 1;
+  width: 390px;
+  background: #ffffff;
+  border: var(--manga-border-thick);
+  box-shadow: var(--manga-shadow);
+  border-radius: 20px;
+  overflow: hidden;
+  animation: card-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+.calculator:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--manga-shadow-hover);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+@keyframes card-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.8) rotate(-5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0);
+  }
+}
+
+/* ==============================
+   Cartoon Header
+   ============================== */
+.cartoon-header {
+  background: var(--cartoon-red);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-bottom: var(--manga-border-thick);
+  position: relative;
+}
+
+/* Comic halftone dot header pattern */
+.cartoon-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.15) 12%, transparent 13%);
+  background-size: 10px 10px;
+  pointer-events: none;
+}
+
+.header-star {
+  font-size: 1.8rem;
+  filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.4));
+  animation: star-bounce 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes star-bounce {
+  0%   { transform: scale(1) rotate(-8deg); }
+  100% { transform: scale(1.2) rotate(8deg); }
+}
+
+.header-title {
+  font-family: var(--font-manga);
+  font-size: 2rem;
+  color: #ffffff;
+  letter-spacing: 2px;
+  text-shadow:
+    4px 4px 0px var(--cartoon-black),
+    -1px -1px 0px var(--cartoon-black),
+    1px -1px 0px var(--cartoon-black),
+    -1px 1px 0px var(--cartoon-black);
+  position: relative;
+  z-index: 1;
+}
+
+/* ==============================
+   Comic Banner Ribbon
+   ============================== */
+.comic-banner {
+  background: var(--cartoon-yellow);
+  border-bottom: var(--manga-border);
+  padding: 8px 16px;
+  text-align: center;
+  font-family: var(--font-hand);
+  font-size: 1rem;
+  color: var(--cartoon-black);
+  letter-spacing: 1px;
+  position: relative;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* ==============================
+   Display Panel — Pop Art Bubble Style
+   ============================== */
+.display-panel {
+  position: relative;
+  background: #f1f2f6;
+  margin: 16px;
+  border: var(--manga-border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  overflow: hidden;
+  box-shadow: inset 4px 4px 0px rgba(0, 0, 0, 0.08);
+}
+
+.panel-sparkle {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  font-size: 1.2rem;
+  opacity: 0.3;
+}
+
+.panel-cloud {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  font-size: 1.3rem;
+  opacity: 0.3;
+  animation: cloud-float-mini 4s ease-in-out infinite alternate;
+}
+
+@keyframes cloud-float-mini {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-5px); }
+}
+
+.display-history {
+  font-family: var(--font-hand);
+  font-size: 0.9rem;
+  color: var(--cartoon-blue);
+  text-align: right;
+  width: 100%;
+  min-height: 1.2em;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+.display-value {
+  font-family: var(--font-manga);
+  font-weight: 700;
+  color: var(--cartoon-black);
+  text-align: right;
+  width: 100%;
+  line-height: 1.1;
+  word-break: break-all;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.8);
+  transition: font-size 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==============================
+   Button Grid
+   ============================== */
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 0 16px 16px;
+}
+
+/* ==============================
+   Bubbly Cartoon Buttons
+   ============================== */
+.calc-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  border: 4px solid var(--cartoon-black);
+  box-shadow: 4px 4px 0px var(--cartoon-black);
+  border-radius: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  font-family: var(--font-manga);
+  font-size: 1.35rem;
+  letter-spacing: 1px;
+  color: var(--cartoon-black);
+  outline: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform 0.1s,
+    box-shadow 0.1s,
+    background-color 0.15s;
+}
+
+.calc-btn:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0px var(--cartoon-black);
+}
+
+.calc-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px var(--cartoon-black);
+}
+
+/* Cartoon light glossy bubble sheen reflection */
+.calc-btn::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  width: 80%;
+  height: 25%;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.calc-btn:focus-visible {
+  outline: 3px solid var(--cartoon-red);
+  outline-offset: 2px;
+}
+
+.btn-label {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.15s;
+}
+
+.calc-btn:hover .btn-label {
+  transform: scale(1.15) rotate(3deg);
+}
+
+/* ==============================
+   Button Variants — Cartoon Palette
+   ============================== */
+
+/* Digits — Soft White comic panels */
+.calc-btn.digit {
+  background: var(--cartoon-white-btn);
+  color: var(--cartoon-black);
+}
+
+.calc-btn.digit:hover {
+  background: #f1f2f6;
+}
+
+.calc-btn.digit.zero {
+  grid-column: span 2;
+}
+
+/* Functions (AC, +/−, %) — Bubbly Cartoon Blue */
+.calc-btn.function {
+  background: var(--cartoon-blue);
+  color: #ffffff;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+}
+
+.calc-btn.function:hover {
+  background: #0077e6;
+}
+
+/* Operators (÷, ×, −, +) — Electric Orange */
+.calc-btn.operator {
+  background: var(--cartoon-orange);
+  color: #ffffff;
+  font-size: 1.45rem;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+}
+
+.calc-btn.operator:hover {
+  background: #ff6f00;
+}
+
+/* Active Operator — Neon Green active state */
+.calc-btn.operator.active {
+  background: var(--cartoon-green);
+  color: var(--cartoon-black);
+  box-shadow: 5px 5px 0px var(--cartoon-black);
+  transform: translate(-2px, -2px);
+  text-shadow: none;
+}
+
+/* Equals — Hot Pink explosion */
+.calc-btn.equals {
+  background: var(--cartoon-red);
+  color: #ffffff;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+}
+
+.calc-btn.equals:hover {
+  background: var(--cartoon-red-dark);
+}
+
+/* ==============================
+   Cartoon Footer
+   ============================== */
+.cartoon-footer {
+  background: var(--cartoon-black);
+  border-top: var(--manga-border);
+  padding: 14px 16px;
+  text-align: center;
+}
+
+.quote {
+  font-family: var(--font-hand);
+  font-size: 0.9rem;
+  color: var(--cartoon-gold);
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.8);
+  opacity: 0.95;
+}
+
+/* ==============================
+   Responsive
+   ============================== */
+@media (max-width: 420px) {
+  .calculator {
+    width: 100%;
+    max-width: 390px;
+  }
+
+  .calc-btn {
+    height: 52px;
+    font-size: 1.2rem;
+  }
+
+  .button-grid {
+    gap: 10px;
+    padding: 0 12px 12px;
+  }
+
+  .header-title {
+    font-size: 1.6rem;
+  }
+
+  .float-item {
+    display: none;
+  }
+}
+
+/* ==========================================
+   FUNNY GUY - Cartoon Theme (result=9)
+   ========================================== */
+.funny-guys-wrapper {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  animation: screen-shake 0.5s ease-out 0.55s 1;
+}
+
+/* ============================================================
+   SCREEN SHAKE on impact
+   ============================================================ */
+.screen-shake-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  animation: screen-shake 0.4s ease-out 0.55s 1;
+}
+
+@keyframes screen-shake {
+  0%   { transform: translate(0, 0); }
+  10%  { transform: translate(-8px, 4px); }
+  20%  { transform: translate(6px, -6px); }
+  30%  { transform: translate(-4px, 2px); }
+  40%  { transform: translate(4px, -4px); }
+  50%  { transform: translate(-2px, 3px); }
+  60%  { transform: translate(3px, -2px); }
+  70%  { transform: translate(-1px, 1px); }
+  80%  { transform: translate(1px, -1px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ============================================================
+   Character zones — position the character + extras
+   ============================================================ */
+.funny-guy-zone {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.funny-guy-zone-left  { margin-left: 10px; }
+.funny-guy-zone-right { margin-right: 10px; }
+
+/* ============================================================
+   COMIC BURST — rotating star behind each character
+   ============================================================ */
+.comic-burst {
+  position: absolute;
+  bottom: 10%;
+  z-index: -1;
+  opacity: 0;
+  animation: burst-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.4) 0.5s 1 forwards,
+             burst-spin 8s linear 0.9s infinite;
+}
+
+.comic-burst-left  { left: 50%; transform: translateX(-50%); }
+.comic-burst-right { right: 0; left: 50%; transform: translateX(-50%); }
+
+@keyframes burst-pop {
+  0%   { opacity: 0; transform: translateX(-50%) scale(0) rotate(0deg); }
+  60%  { opacity: 0.7; transform: translateX(-50%) scale(1.3) rotate(30deg); }
+  100% { opacity: 0.5; transform: translateX(-50%) scale(1) rotate(20deg); }
+}
+
+@keyframes burst-spin {
+  from { transform: translateX(-50%) rotate(0deg); }
+  to   { transform: translateX(-50%) rotate(360deg); }
+}
+
+/* ============================================================
+   SPARKLE PARTICLES — float around the characters
+   ============================================================ */
+.sparkle {
+  position: absolute;
+  font-size: 1.6rem;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 5;
+}
+
+/* Left side sparkles */
+.sparkle-1 { top: 10%; left: 15%;  animation: sparkle-orbit-1 2.4s ease-in-out 0.8s infinite; }
+.sparkle-2 { top: 30%; right: 5%;  animation: sparkle-orbit-2 1.9s ease-in-out 1.0s infinite; }
+.sparkle-3 { top: 50%; left: 5%;   animation: sparkle-orbit-3 2.8s ease-in-out 0.6s infinite; }
+.sparkle-4 { top: 5%;  left: 50%;  animation: sparkle-orbit-4 2.1s ease-in-out 1.2s infinite; }
+.sparkle-5 { top: 25%; left: 60%;  animation: sparkle-orbit-5 3.0s ease-in-out 0.9s infinite; }
+
+/* Right side sparkles */
+.sparkle-r1 { top: 15%; right: 15%; animation: sparkle-orbit-1 2.2s ease-in-out 1.1s infinite; }
+.sparkle-r2 { top: 35%; left: 10%;  animation: sparkle-orbit-2 2.5s ease-in-out 0.7s infinite; }
+.sparkle-r3 { top: 55%; right: 5%;  animation: sparkle-orbit-3 2.0s ease-in-out 1.3s infinite; }
+.sparkle-r4 { top: 8%;  right: 40%; animation: sparkle-orbit-4 2.6s ease-in-out 0.5s infinite; }
+.sparkle-r5 { top: 20%; left: 5%;   animation: sparkle-orbit-5 1.8s ease-in-out 1.4s infinite; }
+
+@keyframes sparkle-orbit-1 {
+  0%   { opacity: 0; transform: translate(0, 0) scale(0.4) rotate(0deg); }
+  20%  { opacity: 1; transform: translate(10px, -20px) scale(1.2) rotate(40deg); }
+  50%  { opacity: 0.8; transform: translate(-8px, -35px) scale(0.9) rotate(120deg); }
+  80%  { opacity: 0.6; transform: translate(5px, -50px) scale(1.1) rotate(250deg); }
+  100% { opacity: 0; transform: translate(0, -60px) scale(0.3) rotate(360deg); }
+}
+
+@keyframes sparkle-orbit-2 {
+  0%   { opacity: 0; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  25%  { opacity: 1; transform: translate(-15px, -15px) scale(1.3) rotate(-60deg); }
+  50%  { opacity: 0.7; transform: translate(8px, -30px) scale(0.8) rotate(-150deg); }
+  75%  { opacity: 0.5; transform: translate(-10px, -45px) scale(1) rotate(-280deg); }
+  100% { opacity: 0; transform: translate(0, -55px) scale(0.4) rotate(-360deg); }
+}
+
+@keyframes sparkle-orbit-3 {
+  0%   { opacity: 0; transform: translate(0, 0) scale(0.3) rotate(0deg); }
+  30%  { opacity: 1; transform: translate(20px, -10px) scale(1.4) rotate(70deg); }
+  60%  { opacity: 0.9; transform: translate(-5px, -25px) scale(1) rotate(180deg); }
+  100% { opacity: 0; transform: translate(12px, -50px) scale(0.5) rotate(360deg); }
+}
+
+@keyframes sparkle-orbit-4 {
+  0%   { opacity: 0; transform: translate(0, 0) scale(0.6) rotate(0deg); }
+  15%  { opacity: 1; transform: translate(-10px, -25px) scale(1.2) rotate(50deg); }
+  50%  { opacity: 0.8; transform: translate(15px, -40px) scale(0.7) rotate(200deg); }
+  100% { opacity: 0; transform: translate(-5px, -65px) scale(0.3) rotate(400deg); }
+}
+
+@keyframes sparkle-orbit-5 {
+  0%   { opacity: 0; transform: translate(0, 0) scale(0.4) rotate(0deg); }
+  20%  { opacity: 1; transform: translate(5px, -18px) scale(1) rotate(-45deg); }
+  60%  { opacity: 0.6; transform: translate(-12px, -35px) scale(1.3) rotate(-180deg); }
+  100% { opacity: 0; transform: translate(8px, -55px) scale(0.5) rotate(-360deg); }
+}
+
+/* ============================================================
+   SPEECH BUBBLES — cartoon word balloons
+   ============================================================ */
+.speech-bubble {
+  position: absolute;
+  top: -55px;
+  background: var(--cartoon-white);
+  border: 4px solid var(--cartoon-black);
+  border-radius: 24px;
+  padding: 10px 18px;
+  z-index: 10;
+  box-shadow: 4px 4px 0px var(--cartoon-black);
+  opacity: 0;
+  animation: bubble-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.4) 0.9s 1 forwards,
+             bubble-float 2.5s ease-in-out 1.3s infinite;
+}
+
+/* Comic tail */
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 14px solid var(--cartoon-black);
+}
+
+.speech-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-top: 11px solid var(--cartoon-white);
+  z-index: 2;
+}
+
+.speech-bubble-left  { left: 50%; transform: translateX(-50%); }
+.speech-bubble-right { right: 0; left: 50%; transform: translateX(-50%); }
+
+.speech-text {
+  font-family: var(--font-manga);
+  font-size: 1.4rem;
+  color: var(--cartoon-red);
+  white-space: nowrap;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+}
+
+@keyframes bubble-pop {
+  0%   { opacity: 0; transform: translateX(-50%) scale(0) rotate(-10deg); }
+  70%  { opacity: 1; transform: translateX(-50%) scale(1.15) rotate(3deg); }
+  100% { opacity: 1; transform: translateX(-50%) scale(1) rotate(0deg); }
+}
+
+@keyframes bubble-float {
+  0%   { transform: translateX(-50%) translateY(0) rotate(0deg); }
+  25%  { transform: translateX(-50%) translateY(-8px) rotate(2deg); }
+  50%  { transform: translateX(-50%) translateY(-2px) rotate(-1deg); }
+  75%  { transform: translateX(-50%) translateY(-10px) rotate(1deg); }
+  100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
+}
+
+
+/* ============================================================
+   BASE: Funny guy image styles
+   ============================================================ */
+.funny-guy {
+  width: 320px;
+  height: auto;
+  object-fit: contain;
+  transform-origin: center bottom;
+  image-rendering: -webkit-optimize-contrast;
+  position: relative;
+  z-index: 3;
+  /* Animated outline glow matching the site's cartoon palette */
+  filter:
+    drop-shadow(0 0 0px #fff)
+    drop-shadow(0 0 5px #fff)
+    drop-shadow(0 0 14px var(--cartoon-red))
+    drop-shadow(0 0 28px var(--cartoon-red))
+    drop-shadow(4px 6px 0px rgba(0, 0, 0, 0.55));
+  animation: cartoon-glow-cycle 3s ease-in-out infinite;
+}
+
+/* Glow cycles through the site's own cartoon color palette */
+@keyframes cartoon-glow-cycle {
+  0%   {
+    filter:
+      drop-shadow(0 0 0px #fff) drop-shadow(0 0 5px #fff)
+      drop-shadow(0 0 14px var(--cartoon-red)) drop-shadow(0 0 30px var(--cartoon-red))
+      drop-shadow(4px 6px 0px rgba(0,0,0,0.55));
+  }
+  20%  {
+    filter:
+      drop-shadow(0 0 0px #fff) drop-shadow(0 0 5px #fff)
+      drop-shadow(0 0 14px var(--cartoon-yellow)) drop-shadow(0 0 30px var(--cartoon-yellow))
+      drop-shadow(4px 6px 0px rgba(0,0,0,0.55));
+  }
+  40%  {
+    filter:
+      drop-shadow(0 0 0px #fff) drop-shadow(0 0 5px #fff)
+      drop-shadow(0 0 14px var(--cartoon-yellow-accent)) drop-shadow(0 0 30px var(--cartoon-yellow-accent))
+      drop-shadow(4px 6px 0px rgba(0,0,0,0.55));
+  }
+  60%  {
+    filter:
+      drop-shadow(0 0 0px #fff) drop-shadow(0 0 5px #fff)
+      drop-shadow(0 0 14px var(--cartoon-green)) drop-shadow(0 0 30px var(--cartoon-green))
+      drop-shadow(4px 6px 0px rgba(0,0,0,0.55));
+  }
+  80%  {
+    filter:
+      drop-shadow(0 0 0px #fff) drop-shadow(0 0 5px #fff)
+      drop-shadow(0 0 14px var(--cartoon-pink)) drop-shadow(0 0 30px var(--cartoon-pink))
+      drop-shadow(4px 6px 0px rgba(0,0,0,0.55));
+  }
+  100% {
+    filter:
+      drop-shadow(0 0 0px #fff) drop-shadow(0 0 5px #fff)
+      drop-shadow(0 0 14px var(--cartoon-red)) drop-shadow(0 0 30px var(--cartoon-red))
+      drop-shadow(4px 6px 0px rgba(0,0,0,0.55));
+  }
+}
+
+/* ---- LEFT character ---- */
+.funny-guy-left {
+  animation:
+    cartoon-drop-left  0.7s cubic-bezier(0.36, 0.07, 0.19, 0.97) 0s    1 forwards,
+    cartoon-flash      0.15s ease-out                              0.55s 1 forwards,
+    cartoon-boing-left 2.2s  cubic-bezier(0.36, 0.07, 0.19, 0.97) 0.8s infinite,
+    cartoon-glow-cycle 3s    ease-in-out                           0.8s infinite;
+}
+
+/* ---- RIGHT character ---- */
+.funny-guy-right {
+  animation:
+    cartoon-drop-right  0.7s cubic-bezier(0.36, 0.07, 0.19, 0.97) 0.1s  1 forwards,
+    cartoon-flash       0.15s ease-out                              0.65s 1 forwards,
+    cartoon-boing-right 2.2s  cubic-bezier(0.36, 0.07, 0.19, 0.97) 0.9s  infinite,
+    cartoon-glow-cycle  3s    ease-in-out                           1.3s  infinite;
+}
+
+/* ============================================================
+   ENTRY: Cartoon Drop + Squash from top (left)
+   ============================================================ */
+@keyframes cartoon-drop-left {
+  0%   { opacity: 0; transform: translateY(-120vh) scaleX(0.6) scaleY(1.6) rotate(-15deg); }
+  55%  { opacity: 1; transform: translateY(0px) scaleX(1.3) scaleY(0.7) rotate(5deg); }
+  70%  { transform: translateY(-40px) scaleX(0.85) scaleY(1.2) rotate(-4deg); }
+  82%  { transform: translateY(0px) scaleX(1.1) scaleY(0.9) rotate(2deg); }
+  91%  { transform: translateY(-14px) scaleX(0.95) scaleY(1.06) rotate(-1deg); }
+  100% { opacity: 1; transform: translateY(0) scaleX(1) scaleY(1) rotate(0deg); }
+}
+
+@keyframes cartoon-drop-right {
+  0%   { opacity: 0; transform: translateY(-120vh) scaleX(-0.6) scaleY(1.6) rotate(15deg); }
+  55%  { opacity: 1; transform: translateY(0px) scaleX(-1.3) scaleY(0.7) rotate(-5deg); }
+  70%  { transform: translateY(-40px) scaleX(-0.85) scaleY(1.2) rotate(4deg); }
+  82%  { transform: translateY(0px) scaleX(-1.1) scaleY(0.9) rotate(-2deg); }
+  91%  { transform: translateY(-14px) scaleX(-0.95) scaleY(1.06) rotate(1deg); }
+  100% { opacity: 1; transform: translateY(0) scaleX(-1) scaleY(1) rotate(0deg); }
+}
+
+/* ============================================================
+   IMPACT FLASH
+   ============================================================ */
+@keyframes cartoon-flash {
+  0%   { filter: drop-shadow(0 0 0px #fff) drop-shadow(0 0 6px #fff) drop-shadow(0 0 16px #ff0) drop-shadow(0 0 30px #f0f) drop-shadow(4px 6px 0px rgba(0,0,0,0.5)) brightness(3) contrast(2); }
+  100% { filter: drop-shadow(0 0 0px #fff) drop-shadow(0 0 6px #fff) drop-shadow(0 0 16px #ff0) drop-shadow(0 0 30px #f0f) drop-shadow(4px 6px 0px rgba(0,0,0,0.5)); }
+}
+
+/* ============================================================
+   LOOP: Wacky cartoon boing-bounce (left)
+   ============================================================ */
+@keyframes cartoon-boing-left {
+  0%   { transform: scaleX(1)    scaleY(1)    translateY(0px)   rotate(0deg); }
+  8%   { transform: scaleX(0.88) scaleY(1.15) translateY(-4px)  rotate(-3deg); }
+  18%  { transform: scaleX(1.14) scaleY(0.82) translateY(0px)   rotate(4deg); }
+  28%  { transform: scaleX(0.92) scaleY(1.12) translateY(-28px) rotate(-5deg); }
+  38%  { transform: scaleX(1.18) scaleY(0.78) translateY(0px)   rotate(6deg); }
+  48%  { transform: scaleX(0.95) scaleY(1.07) translateY(-12px) rotate(-2deg); }
+  56%  { transform: scaleX(1.06) scaleY(0.93) translateY(0px)   rotate(3deg); }
+  65%  { transform: scaleX(1)    scaleY(1)    translateY(-6px)  rotate(-1deg); }
+  75%  { transform: scaleX(1.03) scaleY(0.98) translateY(0px)   rotate(2deg); }
+  88%  { transform: scaleX(0.97) scaleY(1.03) translateY(-3px)  rotate(-1deg); }
+  100% { transform: scaleX(1)    scaleY(1)    translateY(0px)   rotate(0deg); }
+}
+
+@keyframes cartoon-boing-right {
+  0%   { transform: scaleX(-1)    scaleY(1)    translateY(0px)   rotate(0deg); }
+  8%   { transform: scaleX(-0.88) scaleY(1.15) translateY(-4px)  rotate(3deg); }
+  18%  { transform: scaleX(-1.14) scaleY(0.82) translateY(0px)   rotate(-4deg); }
+  28%  { transform: scaleX(-0.92) scaleY(1.12) translateY(-28px) rotate(5deg); }
+  38%  { transform: scaleX(-1.18) scaleY(0.78) translateY(0px)   rotate(-6deg); }
+  48%  { transform: scaleX(-0.95) scaleY(1.07) translateY(-12px) rotate(2deg); }
+  56%  { transform: scaleX(-1.06) scaleY(0.93) translateY(0px)   rotate(-3deg); }
+  65%  { transform: scaleX(-1)    scaleY(1)    translateY(-6px)  rotate(1deg); }
+  75%  { transform: scaleX(-1.03) scaleY(0.98) translateY(0px)   rotate(-2deg); }
+  88%  { transform: scaleX(-0.97) scaleY(1.03) translateY(-3px)  rotate(1deg); }
+  100% { transform: scaleX(-1)    scaleY(1)    translateY(0px)   rotate(0deg); }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .funny-guy { width: 240px; }
+  .comic-burst svg { width: 200px; height: 200px; }
+  .speech-text { font-size: 1.1rem; }
+}
+
+@media (max-width: 768px) {
+  .funny-guy { width: 160px; }
+  .funny-guy-zone-left  { margin-left: 5px; }
+  .funny-guy-zone-right { margin-right: 5px; }
+  .comic-burst svg { width: 150px; height: 150px; }
+  .speech-bubble { padding: 6px 12px; }
+  .speech-text { font-size: 0.9rem; }
+}
+
+@media (max-width: 500px) {
+  .funny-guys-wrapper { display: none; }
+}
+
+/* ============================================================
+   TOP CORNER SPINNING FUNNY GUY HEADS (when result is 9)
+   ============================================================ */
+/* Hide default sun pseudo-element when result has 9 */
+body.has-nine #root::before {
+  display: none !important;
+}
+
+.funny-guy-head-spin {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: fixed;
+  z-index: 100;
+  border: 5px solid var(--cartoon-black);
+  box-shadow: 4px 6px 0px rgba(0, 0, 0, 0.4);
+  background: var(--cartoon-white);
+}
+
+.funny-guy-head-spin img {
+  position: absolute;
+  top: -15px; /* offset to hide the body and keep the head centered */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 230%; /* scale up the image to zoom in on the head portion */
+  height: auto;
+}
+
+.spinning-head-left {
+  top: 15%;
+  left: 8%;
+  animation: spin-clockwise 2.5s linear infinite;
+}
+
+.spinning-head-right {
+  top: 30px;
+  right: 60px;
+  animation: spin-counter-clockwise 2.5s linear infinite;
+}
+
+@keyframes spin-clockwise {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spin-counter-clockwise {
+  0%   { transform: scaleX(-1) rotate(0deg); }
+  100% { transform: scaleX(-1) rotate(-360deg); }
+}
+
+@media (max-width: 768px) {
+  .funny-guy-head-spin {
+    width: 70px;
+    height: 70px;
+  }
+  .funny-guy-head-spin img {
+    top: -7px;
+  }
+  .spinning-head-right {
+    top: 20px;
+    right: 20px;
+  }
+}
+

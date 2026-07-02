@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 Number Guessing Game 🎮</title>
+    <link rel="stylesheet" href="num_g.css">
+</head>
+<body>
+    <div class="stars"></div>
+    
+    <div class="game-container">
+        <div class="header">
+            <h1> Number Guesser </h1>
+            <p class="subtitle">Can you guess the magic number?</p>
+        </div>
+
+        <div class="game-content">
+            <div class="info-box">
+                <p class="info">I'm thinking of a number between <span class="highlight">1</span> and <span class="highlight">100</span></p>
+                <p class="attempts">Attempts Left: <span id="attemptsLeft">10</span></p>
+            </div>
+
+            <div class="input-section">
+                <input type="number" id="guessInput" class="guess-input" placeholder="Enter your guess..." min="1" max="100" autofocus>
+                <button class="btn-guess" onclick="checkGuess()">🎲 Guess!</button>
+            </div>
+
+            <div class="feedback-section">
+                <div id="feedback" class="feedback"></div>
+                <div id="message" class="message"></div>
+            </div>
+
+            <div class="stats-box">
+                <div class="stat">
+                    <span class="stat-label">Attempts Used:</span>
+                    <span id="attemptsUsed" class="stat-value">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Last Guess:</span>
+                    <span id="lastGuess" class="stat-value">-</span>
+                </div>
+            </div>
+
+            <div class="history-box">
+                <h3>📜 Your Guesses</h3>
+                <div id="guessHistory" class="guess-history"></div>
+            </div>
+
+            <div class="button-section">
+                <button class="btn-reset" onclick="resetGame()">🔄 New Game</button>
+                <button class="btn-hint" onclick="getHint()">💡 Hint</button>
+            </div>
+        </div>
+
+        <div id="winModal" class="modal">
+            <div class="modal-content">
+                <h2>🎉 You Won! 🎉</h2>
+                <p id="winMessage"></p>
+                <button onclick="resetGame()" class="btn-play-again">Play Again</button>
+            </div>
+        </div>
+
+        <div id="loseModal" class="modal">
+            <div class="modal-content">
+                <h2>😅 Game Over! 😅</h2>
+                <p id="loseMessage"></p>
+                <button onclick="resetGame()" class="btn-play-again">Try Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="num_g.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+:root {
+  --bg: #0b0a12;
+  --bg-secondary: #141324;
+  --text: #ffffff;
+  --text-dark: #000000;
+  
+  /* Neon Funky Colors */
+  --neon-pink: #ff007f;
+  --neon-cyan: #00f0ff;
+  --neon-yellow: #fff30a;
+  --neon-green: #39ff14;
+  --neon-purple: #b026ff;
+  --neon-orange: #ff5e00;
+
+  /* Fonts */
+  --sans: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --heading: 'Syne', sans-serif;
+  --bungee: 'Bungee', sans-serif;
+  --counter-font: 'Rubik Mono One', sans-serif;
+
+  /* Borders & Shadows */
+  --brutalist-border: 4px solid #000000;
+  --brutalist-shadow: 8px 8px 0px #000000;
+  --brutalist-shadow-active: 2px 2px 0px #000000;
+  --brutalist-shadow-hover: 12px 12px 0px #000000;
+  
+  font-family: var(--sans);
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  /* Retro dotted pattern */
+  background-image: 
+    radial-gradient(rgba(255, 0, 127, 0.15) 2px, transparent 2px),
+    radial-gradient(rgba(0, 240, 255, 0.15) 2px, transparent 2px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Custom retro scrollbar */
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-left: 4px solid #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neon-pink);
+  border: 4px solid #000000;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-cyan);
+  cursor: pointer;
+}
+
+/* High contrast links and selection */
+::selection {
+  background-color: var(--neon-yellow);
+  color: var(--text-dark);
+}

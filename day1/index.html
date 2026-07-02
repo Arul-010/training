@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Arulselvam H - AI & Data Science Student, Java Developer, and Web Developer at Hindusthan Institute of Technology.">
+    <title>Arulselvam H | AI Engineer & Web Developer Portfolio</title>
+    
+    <!-- CSS & Icon CDNs -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Glowing Background Ambient Orb -->
+    <div class="ambient-orb-3"></div>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">ARULSELVAM H</a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Navigation Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#playground">Arena</a></li>
+                <li><a href="#terminal">Terminal</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero section">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <span class="hero-tag"><i class="fa-solid fa-brain"></i> B.Tech AI & Data Science</span>
+                    <h1 class="hero-title">Hi, I'm <span>Arulselvam H</span></h1>
+                    <div class="hero-subtitle">
+                        <span id="typing-text"></span>
+                    </div>
+                    <p class="hero-desc">
+                        I build highly functional web systems, write robust object-oriented code, and study artificial intelligence structures. Currently specializing in Java, backend logic, and dynamic web interfaces.
+                    </p>
+                    <div class="hero-btns">
+                        <a href="#projects" class="btn btn-primary">View Projects <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <div class="glow-ring"></div>
+                    <div class="avatar-frame">
+                        <div class="avatar-inner">
+                            <img src="day1/nk.webp" alt="Arulselvam H Profile">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About & Education Section -->
+        <section id="about" class="section">
+            <h2 class="section-title">About <span>Me</span></h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3>Aspiring AI & Software Engineer</h3>
+                    <p>
+                        I am an Artificial Intelligence student with a strong passion for Java programming, data structures, algorithms, and modern web interfaces. Based at Hindusthan Institute of Technology, my academic and hands-on tracks guide me to model data concepts and write optimized software.
+                    </p>
+                    <p>
+                        I focus on solving real-world challenges through logical algorithm construction. I love combining robust backend logic with interactive frontend interfaces to create beautiful user experiences.
+                    </p>
+                    <div class="info-subgrid">
+                        <div class="info-item">
+                            <h4>Specialization</h4>
+                            <p>AI & Data Science</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>Major Language</h4>
+                            <p>Java (OOP)</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>Location</h4>
+                            <p>Coimbatore, TN, India</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>Expected Grad</h4>
+                            <p>2027</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="edu-card">
+                    <span class="edu-tag">Undergraduate Studies</span>
+                    <h3 class="edu-title">B.Tech in Artificial Intelligence and Data Science</h3>
+                    <p class="edu-subtitle">Hindusthan Institute of Technology</p>
+                    <ul class="edu-details">
+                        <li><i class="fa-solid fa-circle-check"></i> Active GPA track in engineering systems</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Study of Data Structures & Algorithms</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Core Database Management (SQL)</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Operating Systems & Networks</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <h2 class="section-title">Technical <span>Skills</span></h2>
+            <div class="skills-grid">
+                <!-- Programming Languages -->
+                <div class="skill-category glass-card">
+                    <h3 class="skill-category-title"><i class="fa-solid fa-code"></i> Core Languages</h3>
+                    <div class="skills-list">
+                        <div class="skill-bar-container">
+                            <div class="skill-info">
+                                <span class="skill-name">Java (OOP)</span>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-info">
+                                <span class="skill-name">Data Structures</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-info">
+                                <span class="skill-name">Algorithms</span>
+                                <span class="skill-percentage">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web Development -->
+                <div class="skill-category glass-card">
+                    <h3 class="skill-category-title"><i class="fa-solid fa-globe"></i> Web Technologies</h3>
+                    <div class="skills-list">
+                        <div class="skill-bar-container">
+                            <div class="skill-info">
+                                <span class="skill-name">HTML5</span>
+                                <span class="skill-percentage">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-info">
+                                <span class="skill-name">CSS3 & Styling</span>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-info">
+                                <span class="skill-name">JavaScript (ES6+)</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specialty & Tools -->
+                <div class="skill-category glass-card">
+                    <h3 class="skill-category-title"><i class="fa-solid fa-sliders"></i> Specialized Tools</h3>
+                    <div class="skills-list">
+                        <div class="skill-bar-container">
+                            <div class="skill-info">
+                                <span class="skill-name">AI & Data Science Concepts</span>
+                                <span class="skill-percentage">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-info">
+                                <span class="skill-name">SQL & Databases</span>
+                                <span class="skill-percentage">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-info">
+                                <span class="skill-name">Git & VS Code</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Overview Section -->
+        <section id="projects" class="section">
+            <div class="projects-header">
+                <h2 class="section-title">My <span>Projects</span></h2>
+                <div class="tabs">
+                    <button class="tab-btn active" data-filter="all">All Projects</button>
+                    <button class="tab-btn" data-filter="portal">Portals</button>
+                    <button class="tab-btn" data-filter="interactives">Games & Apps</button>
+                </div>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Project 1: Department Portal -->
+                <div class="project-card glass-card" data-category="portal">
+                    <div class="project-card-header">
+                        <i class="fa-regular fa-folder-open project-folder-icon"></i>
+                        <div class="project-links">
+                            <a href="day3/landing_page.html" target="_blank" title="Open Portal Page"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                    <h3>HIT Department Portal</h3>
+                    <p>A comprehensive academic catalog and resource hub for the Department of Artificial Intelligence and Data Science at Hindusthan Institute of Technology.</p>
+                    <ul class="project-tech">
+                        <li>HTML5</li>
+                        <li>CSS Grid</li>
+                        <li>Structured Design</li>
+                    </ul>
+                    <a href="day3/landing_page.html" target="_blank" class="project-btn">Explore Live</a>
+                </div>
+
+                <!-- Project 2: Registration Validation Form -->
+                <div class="project-card glass-card" data-category="portal">
+                    <div class="project-card-header">
+                        <i class="fa-regular fa-folder-open project-folder-icon"></i>
+                        <div class="project-links">
+                            <a href="day2/REG%20FORM.html" target="_blank" title="Open Registration Form"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                    <h3>Secure Registry Form</h3>
+                    <p>An interactive student registration panel equipped with login layout sheets, field-specific validation structures, and data handling.</p>
+                    <ul class="project-tech">
+                        <li>HTML Form</li>
+                        <li>CSS Layout</li>
+                        <li>JS Validator</li>
+                    </ul>
+                    <a href="day2/REG%20FORM.html" target="_blank" class="project-btn">Test Forms</a>
+                </div>
+
+                <!-- Project 3: Interactive Calculator -->
+                <div class="project-card glass-card" data-category="interactives">
+                    <div class="project-card-header">
+                        <i class="fa-regular fa-folder-open project-folder-icon"></i>
+                        <div class="project-links">
+                            <a href="day4/calclulator/calculator.html" target="_blank" title="Open Calculator Page"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                    <h3>Scientific Web Calculator</h3>
+                    <p>A web calculator built with advanced layout properties. Calculates operations, manages backspacing, and displays equations dynamically.</p>
+                    <ul class="project-tech">
+                        <li>Vanilla JS</li>
+                        <li>CSS Flexbox</li>
+                        <li>Math Evaluator</li>
+                    </ul>
+                    <a href="#playground" class="project-btn">Play In Arena</a>
+                </div>
+
+                <!-- Project 4: Guessing Game -->
+                <div class="project-card glass-card" data-category="interactives">
+                    <div class="project-card-header">
+                        <i class="fa-regular fa-folder-open project-folder-icon"></i>
+                        <div class="project-links">
+                            <a href="day4/number%20guess/num_g.html" target="_blank" title="Open Game Page"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                    <h3>Number Guessing Game</h3>
+                    <p>An interactive numerical puzzle that generates random targets and parses user attempts. Gives proximity hints like hot, cold, and warm.</p>
+                    <ul class="project-tech">
+                        <li>Game Logic</li>
+                        <li>Interactive DOM</li>
+                        <li>CSS Keyframes</li>
+                    </ul>
+                    <a href="#playground" class="project-btn">Play In Arena</a>
+                </div>
+
+                <!-- Project 5: Persistent Todo Application -->
+                <div class="project-card glass-card" data-category="interactives">
+                    <div class="project-card-header">
+                        <i class="fa-regular fa-folder-open project-folder-icon"></i>
+                        <div class="project-links">
+                            <a href="day5/eb.html" target="_blank" title="Open Todo Page"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                    <h3>Smart Tasks Planner</h3>
+                    <p>A client-side activity manager utilizing Web Storage structures to persist items across tab visits. Features adding, deleting, and updating states.</p>
+                    <ul class="project-tech">
+                        <li>LocalStorage</li>
+                        <li>JS Events</li>
+                        <li>Glass Cards</li>
+                    </ul>
+                    <a href="#playground" class="project-btn">Play In Arena</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Playable Projects Arena -->
+        <section id="playground" class="section playground-section">
+            <h2 class="section-title">Live Playable <span>Arena</span></h2>
+            <p style="color: var(--text-secondary); margin-bottom: 30px;">
+                Interact with fully functional versions of my projects right here on this page. No downloads, no redirects—just pure code execution!
+            </p>
+            
+            <div class="playground-grid">
+                <div class="playground-nav">
+                    <button class="playground-nav-btn active" data-target="widget-calc">
+                        <i class="fa-solid fa-calculator"></i>
+                        <div>
+                            <span class="playground-nav-btn-title">Dynamic Calculator</span>
+                            <span class="playground-nav-btn-desc">Evaluate equations on the fly</span>
+                        </div>
+                    </button>
+                    <button class="playground-nav-btn" data-target="widget-guess">
+                        <i class="fa-solid fa-gamepad"></i>
+                        <div>
+                            <span class="playground-nav-btn-title">Number Guessing Game</span>
+                            <span class="playground-nav-btn-desc">Find the target in minimal trials</span>
+                        </div>
+                    </button>
+                    <button class="playground-nav-btn" data-target="widget-todo">
+                        <i class="fa-solid fa-list-check"></i>
+                        <div>
+                            <span class="playground-nav-btn-title">Persistent Task Planner</span>
+                            <span class="playground-nav-btn-desc">Manage lists with localStorage</span>
+                        </div>
+                    </button>
+                </div>
+                
+                <div class="playground-stage glass-card">
+                    
+                    <!-- 1. Calculator Widget -->
+                    <div class="playground-widget active" id="widget-calc">
+                        <div class="calc-container">
+                            <div class="calc-display">
+                                <div class="calc-prev-operand" id="calc-prev"></div>
+                                <div class="calc-curr-operand" id="calc-curr">0</div>
+                            </div>
+                            <div class="calc-buttons">
+                                <button class="calc-btn clear" data-action="clear">AC</button>
+                                <button class="calc-btn clear" data-action="delete">DEL</button>
+                                <button class="calc-btn operator" data-action="operator">/</button>
+                                <button class="calc-btn operator" data-action="operator">*</button>
+                                
+                                <button class="calc-btn">7</button>
+                                <button class="calc-btn">8</button>
+                                <button class="calc-btn">9</button>
+                                <button class="calc-btn operator" data-action="operator">-</button>
+                                
+                                <button class="calc-btn">4</button>
+                                <button class="calc-btn">5</button>
+                                <button class="calc-btn">6</button>
+                                <button class="calc-btn operator" data-action="operator">+</button>
+                                
+                                <button class="calc-btn">1</button>
+                                <button class="calc-btn">2</button>
+                                <button class="calc-btn">3</button>
+                                <button class="calc-btn equals" data-action="equals">=</button>
+                                
+                                <button class="calc-btn" style="grid-column: span 2">0</button>
+                                <button class="calc-btn">.</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Number Guessing Game Widget -->
+                    <div class="playground-widget" id="widget-guess">
+                        <div class="guess-card-wrapper">
+                            <div class="guess-title-area">
+                                <i class="fa-solid fa-dice"></i>
+                                <h3>Guess The Secret Number</h3>
+                                <p style="color: var(--text-muted); font-size: 0.85rem;">I am thinking of a number from 1 to 100.</p>
+                            </div>
+                            
+                            <div class="guess-score-board">
+                                <div class="guess-score-item">Current Score: <span id="guess-score">100</span></div>
+                                <div class="guess-score-item">Attempts: <span id="guess-attempts">0</span></div>
+                            </div>
+                            
+                            <div class="guess-input-group">
+                                <input type="number" id="guess-input" class="guess-input" placeholder="Type a number..." min="1" max="100">
+                                <button id="guess-submit" class="guess-btn">Guess</button>
+                            </div>
+                            
+                            <div class="guess-feedback" id="guess-feedback">
+                                I've picked a number. Make your first guess!
+                            </div>
+                            
+                            <button id="guess-restart" class="guess-restart-btn">Play Again</button>
+                        </div>
+                    </div>
+
+                    <!-- 3. Todo List Widget -->
+                    <div class="playground-widget" id="widget-todo">
+                        <div class="todo-wrapper">
+                            <div class="todo-title">
+                                <i class="fa-solid fa-list-check"></i>
+                                <h3>My Task Planner</h3>
+                            </div>
+                            
+                            <div class="todo-input-bar">
+                                <input type="text" id="todo-input" class="todo-input" placeholder="Enter a task to solve...">
+                                <button id="todo-add-btn" class="todo-add-btn">Add Task</button>
+                            </div>
+                            
+                            <ul class="todo-list" id="todo-list">
+                                <!-- Dynamically loaded from script.js -->
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Retro Terminal Section -->
+        <section id="terminal" class="section">
+            <h2 class="section-title">Developer <span>Terminal</span></h2>
+            <p style="color: var(--text-secondary); margin-bottom: 30px;">
+                Are you a keyboard power-user? Interact directly with my portfolio database using custom CLI commands.
+            </p>
+            
+            <div class="terminal-card">
+                <div class="terminal-header">
+                    <div class="terminal-dots">
+                        <span class="terminal-dot close"></span>
+                        <span class="terminal-dot minimize"></span>
+                        <span class="terminal-dot expand"></span>
+                    </div>
+                    <div class="terminal-title">guest@arulselvam: ~</div>
+                    <div><i class="fa-solid fa-terminal" style="color: var(--text-muted); font-size: 0.8rem;"></i></div>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-welcome">
+                        Welcome to Arulselvam's Portfolio CLI OS v1.0.0.<br>
+                        Type "help" to see available terminal prompts.
+                    </div>
+                    <div id="terminal-output"></div>
+                    <div class="terminal-input-container">
+                        <span class="terminal-prompt">guest@arulselvam:~$</span>
+                        <input type="text" id="terminal-input" class="terminal-input" autofocus autocomplete="off" spellcheck="false">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2 class="section-title">Get In <span>Touch</span></h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Let's collaborate!</h3>
+                    <p style="color: var(--text-secondary);">
+                        Whether you want to discuss Artificial Intelligence frameworks, Java development, web design architectures, or just want to say hi, feel free to reach out.
+                    </p>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div class="contact-details">
+                            <h4>Email Me</h4>
+                            <p><a href="mailto:arulrocky05@gmail.com">arulrocky05@gmail.com</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div class="contact-details">
+                            <h4>Call Me</h4>
+                            <p><a href="tel:+919655092426">+91 9655092426</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>HIT Coimbatore, Tamil Nadu, India</p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 10px;">
+                        <h4>Connect Internationally</h4>
+                        <ul class="socials-list">
+                            <li><a href="https://github.com/arulselvam-h" class="social-link" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a></li>
+                            <li><a href="https://linkedin.com/" class="social-link" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                            <li><a href="mailto:arulrocky05@gmail.com" class="social-link"><i class="fa-solid fa-envelope"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="glass-card">
+                    <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent successfully.'); this.reset();">
+                        <div class="form-group">
+                            <input type="text" class="form-input" id="form-name" placeholder=" " required>
+                            <label for="form-name" class="form-label">Full Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" id="form-email" placeholder=" " required>
+                            <label for="form-email" class="form-label">Email Address</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-input" id="form-subject" placeholder=" " required>
+                            <label for="form-subject" class="form-label">Subject</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-input" id="form-msg" placeholder=" " required></textarea>
+                            <label for="form-msg" class="form-label">Message Details</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="align-self: flex-start; padding: 14px 32px;">Send Message <i class="fa-regular fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">ARULSELVAM H</div>
+            <div class="footer-copy">
+                &copy; 2026 Arulselvam H. All Rights Reserved. Crafted for AI & Web Innovation.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS script linkage -->
+    <script src="script.js"></script>
+</body>
+</html>
