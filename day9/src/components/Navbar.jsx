@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Moon, Sun, ShoppingCart, GraduationCap, Compass, Wallet } from 'lucide-react';
+import { Search, ShoppingCart, GraduationCap, Wallet, Sparkles } from 'lucide-react';
 
 export default function Navbar({
   searchTerm,
@@ -8,62 +8,52 @@ export default function Navbar({
   setSelectedCategory,
   cartCount,
   toggleCart,
-  toggleQuiz,
-  toggleBudget,
-  isDarkMode,
-  toggleTheme
+  toggleBudget
 }) {
   const categories = ["All", "Stationery", "Electronics", "Apparel", "Study Prep"];
+  const categoryEmojis = { All: "🏪", Stationery: "✏️", Electronics: "💻", Apparel: "👕", "Study Prep": "📖" };
 
   return (
     <header className="student-navbar">
       <div className="navbar-top">
-        <div className="navbar-logo" onClick={() => setSelectedCategory("All")}>
-          <GraduationCap className="logo-icon animate-pulse" />
+        <div className="navbar-logo" onClick={() => setSelectedCategory("All")} title="Back to all products">
+          <GraduationCap className="logo-icon" size={26} />
           <span>CAMPUS<span>GRID</span></span>
         </div>
 
         <div className="search-bar-container">
-          <Search className="search-icon" />
+          <Search className="search-icon" size={17} />
           <input
             type="text"
-            placeholder="Search school & college supplies..."
+            placeholder="Search supplies, gadgets, apparel…"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-input"
           />
+          {searchTerm && (
+            <button
+              className="search-clear-btn"
+              onClick={() => setSearchTerm("")}
+              title="Clear search"
+            >
+              ×
+            </button>
+          )}
         </div>
 
         <div className="navbar-actions">
-          <button 
-            className="navbar-btn pulse-secondary" 
-            onClick={toggleQuiz}
-            title="Take Study Vibe Quiz"
-          >
-            <Compass size={18} />
-            <span className="btn-text">Find Vibe</span>
-          </button>
-
-          <button 
-            className="navbar-btn pulse-secondary" 
+          <button
+            className="navbar-btn budget-nav-btn"
             onClick={toggleBudget}
             title="Manage Semester Budget"
           >
-            <Wallet size={18} />
+            <Wallet size={16} />
             <span className="btn-text">Budgeter</span>
           </button>
 
-          <button 
-            onClick={toggleTheme} 
-            className="theme-toggle-btn"
-            title={isDarkMode ? "Switch to Day Study" : "Switch to Late Night Library"}
-          >
-            {isDarkMode ? <Sun size={20} className="text-yellow-400" /> : <Moon size={20} className="text-indigo-900" />}
-          </button>
-
           <button onClick={toggleCart} className="cart-btn" title="Open Cart">
-            <ShoppingCart size={20} />
-            {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+            <ShoppingCart size={19} />
+            {cartCount > 0 && <span className="cart-badge animate-scale-in">{cartCount}</span>}
           </button>
         </div>
       </div>
@@ -75,6 +65,7 @@ export default function Navbar({
             onClick={() => setSelectedCategory(category)}
             className={`category-tab ${selectedCategory === category ? 'active' : ''}`}
           >
+            <span className="cat-emoji">{categoryEmojis[category]}</span>
             {category}
           </button>
         ))}

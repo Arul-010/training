@@ -78,44 +78,50 @@ export default function ProductModal({ product, onClose, onAddToCart }) {
           {/* Left Column: Visual Mockup / Image */}
           <div className="modal-visual-column">
             {product.customType === 'badges' ? (
-              <div className="backpack-customizer-canvas">
-                <div className="backpack-svg-mockup">
-                  {/* Styled Backpack container */}
-                  <div className="backpack-body">
-                    <div className="backpack-pocket">
-                      <span className="backpack-brand">APEX</span>
-                      {/* Render badges inside the pocket area */}
-                      <div className="backpack-badge-slots">
-                        {selectedBadges.map((badge, idx) => (
-                          <div key={idx} className="pin-badge animate-bounce-slow">
-                            <Award size={14} className="mr-0.5" />
-                            <span>{badge}</span>
-                          </div>
-                        ))}
-                        {selectedBadges.length === 0 && (
-                          <div className="no-badges-placeholder">
-                            Pin up to 3 badges below!
-                          </div>
-                        )}
+              <>
+                <img src={product.image} alt={product.name} className="modal-product-img" />
+                <div className="backpack-customizer-canvas">
+                  <div className="backpack-svg-mockup">
+                    {/* Styled Backpack container */}
+                    <div className="backpack-body">
+                      <div className="backpack-pocket">
+                        <span className="backpack-brand">APEX</span>
+                        {/* Render badges inside the pocket area */}
+                        <div className="backpack-badge-slots">
+                          {selectedBadges.map((badge, idx) => (
+                            <div key={idx} className="pin-badge animate-bounce-slow">
+                              <Award size={14} className="mr-0.5" />
+                              <span>{badge}</span>
+                            </div>
+                          ))}
+                          {selectedBadges.length === 0 && (
+                            <div className="no-badges-placeholder">
+                              Pin up to 3 badges below!
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </>
             ) : product.customType === 'cover' ? (
-              <div className="cover-customizer-canvas">
-                <div 
-                  className="notebook-mockup"
-                  style={{ backgroundColor: selectedCover?.color || '#4f46e5' }}
-                >
-                  <div className="notebook-spine" />
-                  <div className="notebook-label">
-                    <span className="label-title">JOURNAL</span>
-                    <span className="label-sub">{selectedCover?.name || 'Smart Edition'}</span>
+              <>
+                <img src={product.image} alt={product.name} className="modal-product-img" />
+                <div className="cover-customizer-canvas">
+                  <div 
+                    className="notebook-mockup"
+                    style={{ backgroundColor: selectedCover?.color || '#4f46e5' }}
+                  >
+                    <div className="notebook-spine" />
+                    <div className="notebook-label">
+                      <span className="label-title">JOURNAL</span>
+                      <span className="label-sub">{selectedCover?.name || 'Smart Edition'}</span>
+                    </div>
+                    <div className="notebook-grid-lines" />
                   </div>
-                  <div className="notebook-grid-lines" />
                 </div>
-              </div>
+              </>
             ) : product.customType === 'engraving' ? (
               <div className="engraving-customizer-canvas">
                 <img src={product.image} alt={product.name} className="modal-product-img" />

@@ -56,16 +56,16 @@ export default function BudgetPlanner({
             <input
               type="range"
               min={1000}
-              max={50000}
-              step={500}
+              max={100000}
+              step={1000}
               value={budgetLimit}
               onChange={(e) => setBudgetLimit(Number(e.target.value))}
               className="budget-slider"
             />
             <div className="slider-ticks">
               <span>₹1,000</span>
-              <span>₹25,000</span>
               <span>₹50,000</span>
+              <span>₹1,00,000</span>
             </div>
           </div>
 
@@ -133,7 +133,6 @@ export default function BudgetPlanner({
                   <li>Swap premium headphones for stationery sets to save over ₹3,000.</li>
                 )}
                 <li>Use code <strong>STUDENT15</strong> at checkout for 15% off standard cart items.</li>
-                <li>Bundle items through the "Find Vibe" quiz for automatic package discounts!</li>
               </ul>
             </div>
           )}
