@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
-import { Star, Eye, ShoppingCart, Plus, Heart, Zap } from 'lucide-react';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Star, Eye, ShoppingCart, Plus, Heart } from 'lucide-react';
+import { ShopContext } from '../context/ShopContext';
+import JerseyMockup from './JerseyMockup';
 
-export default function ProductCard({ product, onQuickView, onAddToCart, onAddToBudget, isInBudget }) {
+export default function ProductCard({ product }) {
+  const navigate = useNavigate();
+  const { addToCart, addToBudget, budgetItems } = useContext(ShopContext);
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [addedAnim, setAddedAnim] = useState(false);
 
+  const isInBudget = budgetItems.some(item => item.id === product.id);
+
   const handleAddToCart = (e) => {
     e.stopPropagation();
-    onAddToCart(product);
+    addToCart(product, 1, {});
     setAddedAnim(true);
     setTimeout(() => setAddedAnim(false), 600);
   };
@@ -17,10 +24,16 @@ export default function ProductCard({ product, onQuickView, onAddToCart, onAddTo
     setIsWishlisted(!isWishlisted);
   };
 
+  const isMockupJersey = product.customType === 'jersey' && !product.image.startsWith('/jerseys/');
+
   return (
-    <div className="product-card" onClick={() => onQuickView(product)}>
-      <div className="product-image-container">
-        <img src={product.image} alt={product.name} className="product-image" loading="lazy" />
+    <div className="product-card" onClick={() => navigate(`/product/${product.id}`)} style={{ cursor: 'pointer' }}>
+      <div className="product-image-container" style={{ padding: isMockupJersey ? '0' : 'inherit' }}>
+        {isMockupJersey ? (
+          <JerseyMockup teamName={product.name} height="100%" />
+        ) : (
+          <img src={product.image} alt={product.name} className="product-image" loading="lazy" />
+        )}
         
         {/* Top overlays */}
         <div className="card-image-overlays">
@@ -37,11 +50,11 @@ export default function ProductCard({ product, onQuickView, onAddToCart, onAddTo
         {/* Quick View overlay */}
         <button
           className="quick-view-overlay-btn"
-          onClick={(e) => { e.stopPropagation(); onQuickView(product); }}
+          onClick={(e) => { e.stopPropagation(); navigate(`/product/${product.id}`); }}
           title="Quick View & Customize"
         >
           <Eye size={16} />
-          <span>Quick View</span>
+          <span>View Details</span>
         </button>
       </div>
 
@@ -83,7 +96,7 @@ export default function ProductCard({ product, onQuickView, onAddToCart, onAddTo
           <div className="card-actions">
             <button
               className={`budget-action-btn ${isInBudget ? 'in-budget' : ''}`}
-              onClick={(e) => { e.stopPropagation(); onAddToBudget(product); }}
+              onClick={(e) => { e.stopPropagation(); addToBudget(product); }}
               title={isInBudget ? "Remove from Budget Wishlist" : "Add to Budget Wishlist"}
             >
               <Plus size={14} />

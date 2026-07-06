@@ -1,26 +1,31 @@
-import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
-import Home from "./pages/Home";
-import StudentDetail from "./pages/StudentDetail";
+import { useParams, useNavigate } from "react-router-dom";
+import StudentInfo from "../data/StudentInfo";
 
-function App() {
+function StudDynamicInfo() {
+  // Read URL parameter (id)
+  const { id } = useParams();
+
+  // For navigation
+  const navigate = useNavigate();
+
+  // Find the matching student
+  const stud = StudentInfo.find(
+    (stu) => stu.id === Number(id)
+  );
+
   return (
-    <BrowserRouter>
-      <div>
-        <nav>
-          {/* Home Link */}
-          <NavLink to="/">Home</NavLink>
-          {" | "}
-          <NavLink to="/students">StudentsDetail</NavLink>
-        </nav>
+    <div>
+      <h3>Student Info</h3>
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/students" element={<StudentDetail />} />
-          <Route path="/students/:id" element={<StudentDetail />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+      <h4>Id: {stud.id}</h4>
+      <h4>Name: {stud.name}</h4>
+      <h4>Department: {stud.dept}</h4>
+
+      <button onClick={() => navigate("/")}>
+        Back
+      </button>
+    </div>
   );
 }
 
-export default App;
+export default StudDynamicInfo;
