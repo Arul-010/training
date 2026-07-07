@@ -1,0 +1,75 @@
+.input-group-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  text-align: left;
+}
+
+.input-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-title);
+  letter-spacing: -0.1px;
+}
+
+.required-star {
+  color: var(--color-danger);
+}
+
+.input-field-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input-field-icon {
+  position: absolute;
+  left: 14px;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  font-size: 1.1rem;
+}
+
+.input-control {
+  width: 100%;
+  padding: 11px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  background-color: #ffffff;
+  font-size: 0.9rem;
+  color: var(--text-title);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.input-control.with-icon {
+  padding-left: 42px;
+}
+
+.input-control:hover:not(:focus) {
+  border-color: var(--border-hover);
+}
+
+.input-control::placeholder {
+  color: var(--text-light);
+}
+
+/* Error State styling overrides */
+.has-error .input-control {
+  border-color: var(--color-danger);
+}
+
+.has-error .input-control:focus {
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+}
+
+.input-error-msg {
+  font-size: 0.775rem;
+  color: var(--color-danger);
+  font-weight: 600;
+  margin-top: 2px;
+  animation: fadeIn var(--transition-fast) forwards;
+}
