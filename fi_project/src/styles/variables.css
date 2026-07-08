@@ -1,53 +1,56 @@
 :root {
-  /* ─── Brand Primary: Corporate Blue ─── */
-  --primary-color: #2563EB;
-  --primary-hover: #1d4ed8;
-  --primary-light: #eff6ff;
-  --primary-glow: rgba(37, 99, 235, 0.12);
+  /* ─── Brand Primary: Premium Electric Violet ─── */
+  --primary-color: #6366F1;
+  --primary-hover: #4F46E5;
+  --primary-light: rgba(99, 102, 241, 0.06);
+  --primary-glow: rgba(99, 102, 241, 0.08);
 
-  /* ─── Brand Secondary: Dark Navy ─── */
-  --secondary-color: #1E293B;
-  --secondary-hover: #0f172a;
-  --secondary-light: #f1f5f9;
+  /* ─── Brand Secondary: Slate Obsidian ─── */
+  --secondary-color: #0F172A;
+  --secondary-hover: #020617;
+  --secondary-light: #F8FAFC;
 
-  /* ─── Sidebar Theme ─── */
-  --bg-sidebar: #1E293B;
-  --sidebar-hover: #273548;
-  --sidebar-active: #334155;
-  --sidebar-text: #94a3b8;
-  --sidebar-text-active: #ffffff;
+  /* ─── Sidebar Theme: Obsidian Black ─── */
+  --bg-sidebar: #0B0F19;
+  --sidebar-hover: #161D2F;
+  --sidebar-active: #1E293B;
+  --sidebar-text: #64748B;
+  --sidebar-text-active: #F8FAFC;
 
-  /* ─── App Surface Colors ─── */
-  --bg-app: #F8FAFC;
+  /* ─── App Surface Colors: Clean Slate ─── */
+  --bg-app: #F3F4F6;
   --bg-card: #FFFFFF;
 
-  /* ─── Borders ─── */
-  --border-color: #e2e8f0;
-  --border-hover: #cbd5e1;
-  --border-focus: #2563EB;
+  /* ─── Borders: Premium Soft Glass ─── */
+  --border-color: rgba(99, 102, 241, 0.08);
+  --border-hover: rgba(99, 102, 241, 0.15);
+  --border-focus: #6366F1;
 
   /* ─── Text Layers ─── */
-  --text-title: #0f172a;
+  --text-title: #0F172A;
   --text-body: #334155;
-  --text-muted: #475569;
-  --text-light: #94a3b8;
+  --text-muted: #64748B;
+  --text-light: #94A3B8;
 
   /* ─── Status / Feedback Accents ─── */
-  --color-success: #22C55E;
-  --bg-success: #f0fdf4;
-  --text-success: #15803d;
+  --color-success: #10B981;
+  --bg-success: rgba(16, 185, 129, 0.06);
+  --text-success: #047857;
 
-  --color-warning: #f59e0b;
-  --bg-warning: #fffbeb;
-  --text-warning: #b45309;
+  /* ─── Orange / Yellow warning ─── */
+  --color-warning: #F59E0B;
+  --bg-warning: rgba(245, 158, 11, 0.06);
+  --text-warning: #B45309;
 
+  /* ─── Red danger ─── */
   --color-danger: #EF4444;
-  --bg-danger: #fef2f2;
-  --text-danger: #b91c1c;
+  --bg-danger: rgba(239, 68, 68, 0.06);
+  --text-danger: #B91C1C;
 
-  --color-info: #3b82f6;
-  --bg-info: #eff6ff;
-  --text-info: #1d4ed8;
+  /* ─── Blue Info ─── */
+  --color-info: #3B82F6;
+  --bg-info: rgba(59, 130, 246, 0.06);
+  --text-info: #1D4ED8;
 
   /* ─── Border Radius ─── */
   --border-radius-sm: 8px;
@@ -55,18 +58,18 @@
   --border-radius-lg: 20px;
   --border-radius-full: 9999px;
 
-  /* ─── Shadows ─── */
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
-  --shadow-md: 0 4px 20px -2px rgba(15, 23, 42, 0.08), 0 2px 8px -1px rgba(15, 23, 42, 0.04);
-  --shadow-lg: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 10px 10px -5px rgba(15, 23, 42, 0.04);
-  --shadow-hover: 0 25px 30px -10px rgba(37, 99, 235, 0.15), 0 10px 15px -5px rgba(37, 99, 235, 0.06);
+  /* ─── Shadows: Deep and Soft ─── */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 12px 30px -10px rgba(15, 23, 42, 0.04), 0 4px 12px -2px rgba(15, 23, 42, 0.02);
+  --shadow-lg: 0 30px 60px -15px rgba(15, 23, 42, 0.08), 0 10px 20px -5px rgba(15, 23, 42, 0.03);
+  --shadow-hover: 0 20px 25px -5px rgba(99, 102, 241, 0.08), 0 10px 10px -5px rgba(99, 102, 241, 0.03);
 
   /* ─── Typography ─── */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 
   /* ─── Transitions ─── */
-  --transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
   /* ─── Layout Dimensions ─── */
   --sidebar-width: 260px;

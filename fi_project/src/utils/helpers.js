@@ -49,11 +49,11 @@ export const capitalize = (string) => {
 
 /**
  * Returns the avatar image URL for an employee.
- * Falls back to a DiceBear generated avatar if no custom avatar is set.
- * @param {string} name - Employee name (used as seed)
- * @param {string} [avatar] - Custom avatar URL
+ * Always uses the user's own profile photo.
+ * @param {string} name - Employee name (unused, kept for API compatibility)
+ * @param {string} [avatar] - Custom avatar URL (ignored in favour of the local photo)
  * @returns {string}
  */
 export const getAvatarUrl = (name, avatar) => {
-  return avatar || `https://api.dicebear.com/7.x/adventurer/svg?seed=${encodeURIComponent(name)}`;
+  return '/user-img.webp';
 };

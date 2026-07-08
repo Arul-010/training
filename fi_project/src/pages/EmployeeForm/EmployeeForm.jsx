@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEmployees } from '../../context/EmployeeContext';
 import { DEPARTMENTS } from '../../utils/mockData';
@@ -9,6 +9,29 @@ import Input from '../../components/UI/Input';
 import SelectInput from '../../components/UI/SelectInput';
 import LoadingState from '../../components/Common/LoadingState';
 import './EmployeeForm.css';
+
+const PRESET_ROLES = [
+  'Software Engineer',
+  'Senior Software Engineer',
+  'Lead Developer',
+  'Frontend Engineer',
+  'Backend Developer',
+  'Fullstack Developer',
+  'Product Manager',
+  'UX Designer',
+  'UI/UX Researcher',
+  'QA Specialist',
+  'HR Specialist',
+  'HR Manager',
+  'System Administrator',
+  'Data Scientist',
+  'DevOps Engineer',
+  'Marketing Specialist',
+  'Finance Controller',
+  'Business Analyst',
+  'Project Manager',
+  'Office Administrator'
+];
 
 const EmployeeForm = () => {
   const { id } = useParams();
@@ -31,6 +54,21 @@ const EmployeeForm = () => {
 
   // Validation errors state
   const [errors, setErrors] = useState({});
+
+  // Role searchable dropdown state
+  const [showRoleDropdown, setShowRoleDropdown] = useState(false);
+  const roleDropdownRef = useRef(null);
+
+  // Dismiss role dropdown on click outside
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (roleDropdownRef.current && !roleDropdownRef.current.contains(e.target)) {
+        setShowRoleDropdown(false);
+      }
+    };
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => document.removeEventListener('mousedown', handleOutsideClick);
+  }, []);
 
   // If in edit mode, pull details and prefill
   useEffect(() => {
@@ -225,17 +263,118 @@ const EmployeeForm = () => {
                 ))}
               </SelectInput>
 
-              {/* Job Role */}
-              <Input
-                label="Job Role"
-                id="role"
-                name="role"
-                value={formData.role}
-                onChange={handleChange}
-                error={errors.role}
-                placeholder="Senior Frontend Developer"
-                required
-              />
+              {/* Job Role — Searchable Dropdown */}
+              <div className="searchable-role-container" ref={roleDropdownRef} style={{ position: 'relative' }}>
+                <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '600', color: 'var(--text-body)', marginBottom: '8px' }}>
+                  Job Role <span style={{ color: 'var(--color-danger)' }}>*</span>
+                </label>
+                <div style={{ position: 'relative' }}>
+                  <input
+                    type="text"
+                    id="role"
+                    name="role"
+                    className={`search-box-input${errors.role ? ' has-error' : ''}`}
+                    value={formData.role}
+                    onChange={(e) => {
+                      handleChange(e);
+                      setShowRoleDropdown(true);
+                    }}
+                    onFocus={() => setShowRoleDropdown(true)}
+                    placeholder="Search or type a job role..."
+                    autoComplete="off"
+                    style={{
+                      width: '100%',
+                      padding: '12px 40px 12px 16px',
+                      border: `1px solid ${errors.role ? 'var(--color-danger)' : 'var(--border-color)'}`,
+                      borderRadius: 'var(--border-radius-sm)',
+                      background: 'var(--bg-card)',
+                      color: 'var(--text-title)',
+                      fontSize: '0.925rem',
+                      outline: 'none',
+                      transition: 'border var(--transition-fast)',
+                      boxSizing: 'border-box'
+                    }}
+                  />
+                  {formData.role && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setFormData(prev => ({ ...prev, role: '' }));
+                        if (errors.role) setErrors(prev => ({ ...prev, role: '' }));
+                        setShowRoleDropdown(true);
+                      }}
+                      style={{
+                        position: 'absolute', right: '12px', top: '50%',
+                        transform: 'translateY(-50%)',
+                        background: 'none', border: 'none',
+                        color: 'var(--text-light)', cursor: 'pointer',
+                        fontSize: '1.1rem', lineHeight: 1, padding: '4px'
+                      }}
+                      title="Clear selection"
+                    >×</button>
+                  )}
+                </div>
+                {errors.role && (
+                  <span style={{ display: 'block', fontSize: '0.8rem', color: 'var(--color-danger)', marginTop: '4px' }}>
+                    {errors.role}
+                  </span>
+                )}
+
+                {showRoleDropdown && (
+                  <ul className="searchable-role-dropdown" style={{
+                    position: 'absolute', top: 'calc(100% + 4px)', left: 0, right: 0,
+                    background: 'var(--bg-card)',
+                    border: '1px solid var(--border-color)',
+                    borderRadius: 'var(--border-radius-md)',
+                    boxShadow: 'var(--shadow-lg)',
+                    zIndex: 50,
+                    maxHeight: '220px',
+                    overflowY: 'auto',
+                    padding: '6px 0',
+                    listStyle: 'none',
+                    margin: 0
+                  }}>
+                    {PRESET_ROLES
+                      .filter(r => r.toLowerCase().includes((formData.role || '').toLowerCase()))
+                      .length > 0 ? (
+                        PRESET_ROLES
+                          .filter(r => r.toLowerCase().includes((formData.role || '').toLowerCase()))
+                          .map(r => (
+                            <li
+                              key={r}
+                              className="role-dropdown-item"
+                              onMouseDown={(e) => {
+                                e.preventDefault(); // prevent blur before click
+                                setFormData(prev => ({ ...prev, role: r }));
+                                setShowRoleDropdown(false);
+                                if (errors.role) setErrors(prev => ({ ...prev, role: '' }));
+                              }}
+                              style={{
+                                padding: '10px 16px',
+                                cursor: 'pointer',
+                                fontSize: '0.9rem',
+                                borderRadius: '4px',
+                                margin: '0 6px',
+                                transition: 'background var(--transition-fast)'
+                              }}
+                            >
+                              {r}
+                            </li>
+                          ))
+                      ) : (
+                        <li style={{
+                          padding: '10px 16px',
+                          fontSize: '0.85rem',
+                          color: 'var(--text-light)',
+                          fontStyle: 'italic'
+                        }}>
+                          No presets match — press Enter to use "{formData.role}"
+                        </li>
+                      )
+                    }
+                  </ul>
+                )}
+              </div>
 
               {/* Salary */}
               <Input

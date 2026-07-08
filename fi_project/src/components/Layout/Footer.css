@@ -1,10 +1,11 @@
 /* Footer.css */
 
 .app-footer {
-  background: var(--bg-card);
-  border-top: 1px solid var(--border-color);
+  background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 50%, #3B82F6 100%);
+  border-top: 2px solid rgba(255, 255, 255, 0.15);
   padding: 0 32px;
   flex-shrink: 0;
+  box-shadow: 0 -4px 20px rgba(29, 78, 216, 0.25);
 }
 
 .footer-inner {
@@ -27,14 +28,15 @@
 .footer-logo {
   font-size: 0.9rem;
   font-weight: 800;
-  color: var(--text-title);
+  color: #ffffff;
   letter-spacing: -0.3px;
   white-space: nowrap;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 .footer-tagline {
   font-size: 0.775rem;
-  color: var(--text-light);
+  color: rgba(255, 255, 255, 0.75);
   display: flex;
   align-items: center;
   gap: 4px;
@@ -57,16 +59,16 @@
 .footer-link {
   font-size: 0.825rem;
   font-weight: 600;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.8);
   transition: color var(--transition-fast);
 }
 
 .footer-link:hover {
-  color: var(--primary-color);
+  color: #ffffff;
 }
 
 .footer-sep {
-  color: var(--border-color);
+  color: rgba(255, 255, 255, 0.4);
   font-size: 0.9rem;
   user-select: none;
 }
@@ -74,7 +76,7 @@
 /* Copyright */
 .footer-copy {
   font-size: 0.775rem;
-  color: var(--text-light);
+  color: rgba(255, 255, 255, 0.7);
   white-space: nowrap;
 }
 

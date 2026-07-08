@@ -1,21 +1,32 @@
 import { useEffect, useContext } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import ProductDetail from './pages/ProductDetail';
 import CartPage from './pages/CartPage';
 import BudgetPage from './pages/BudgetPage';
+import AboutPage from './pages/AboutPage';
+import SupportPage from './pages/SupportPage';
+import CustomizationGuide from './pages/CustomizationGuide';
+import ContactPage from './pages/ContactPage';
+import BuyNowPage from './pages/BuyNowPage';
 import { ShopContext } from './context/ShopContext';
 import { Zap } from 'lucide-react';
 import './App.css';
 
 function App() {
   const { toasts } = useContext(ShopContext);
+  const location = useLocation();
 
   useEffect(() => {
-    document.body.style.backgroundColor = '#060a0f';
+    document.body.style.backgroundColor = 'var(--bg-app)';
     document.body.style.margin = '0';
   }, []);
+
+  // Scroll to top on route change to guarantee professional page loads
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <div className="app-wrapper day-study">
@@ -28,6 +39,11 @@ function App() {
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/budget" element={<BudgetPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/support" element={<SupportPage />} />
+        <Route path="/customization" element={<CustomizationGuide />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/buynow/:id" element={<BuyNowPage />} />
       </Routes>
 
       {/* Footer */}
@@ -39,13 +55,13 @@ function App() {
             <span>SPORTZONE STORE</span>
           </div>
           <div className="footer-links">
-            <span>About Us</span>
+            <Link to="/about" className="footer-nav-link">About Us</Link>
             <span>•</span>
-            <span>Returns &amp; Refunds</span>
+            <Link to="/support" className="footer-nav-link">Returns &amp; Refunds</Link>
             <span>•</span>
-            <span>Jersey Customization</span>
+            <Link to="/customization" className="footer-nav-link">Jersey Customization</Link>
             <span>•</span>
-            <span>Contact</span>
+            <Link to="/contact" className="footer-nav-link">Contact</Link>
           </div>
           <p>© 2026 SportZone — Made in India 🇮🇳 for Sports Fans</p>
           <div className="student-tips-scroller">

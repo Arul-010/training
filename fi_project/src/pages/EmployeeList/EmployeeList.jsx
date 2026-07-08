@@ -30,12 +30,21 @@ const EmployeeList = () => {
   // Perform filtering, searching, and sorting
   const filteredEmployees = employees
     .filter((emp) => {
-      // 1. Search term check
+      if (!emp) return false;
+      // 1. Search term check defensively
       const query = searchTerm.toLowerCase();
+      const name = emp.name ? String(emp.name).toLowerCase() : '';
+      const email = emp.email ? String(emp.email).toLowerCase() : '';
+      const designation = emp.designation ? String(emp.designation).toLowerCase() : '';
+      const department = emp.department ? String(emp.department).toLowerCase() : '';
+      const id = emp.id ? String(emp.id).toLowerCase() : '';
+
       const matchesSearch =
-        emp.name.toLowerCase().includes(query) ||
-        emp.email.toLowerCase().includes(query) ||
-        emp.role.toLowerCase().includes(query);
+        name.includes(query) ||
+        email.includes(query) ||
+        designation.includes(query) ||
+        department.includes(query) ||
+        id.includes(query);
 
       // 2. Department check
       const matchesDept = selectedDept === '' || emp.department === selectedDept;

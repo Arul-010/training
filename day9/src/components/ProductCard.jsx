@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Star, Eye, ShoppingCart, Plus, Heart } from 'lucide-react';
+import { Star, Eye, ShoppingCart, Plus, Heart, Zap } from 'lucide-react';
 import { ShopContext } from '../context/ShopContext';
 import JerseyMockup from './JerseyMockup';
 
@@ -110,6 +110,15 @@ export default function ProductCard({ product }) {
             >
               <ShoppingCart size={14} />
               <span>{addedAnim ? '✓' : 'Add'}</span>
+            </button>
+
+            <button
+              className="buy-now-card-btn"
+              onClick={(e) => { e.stopPropagation(); navigate(`/buynow/${product.id}`); }}
+              title="Buy Now — instant checkout"
+            >
+              <Zap size={14} />
+              <span>Buy</span>
             </button>
           </div>
         </div>

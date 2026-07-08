@@ -77,3 +77,18 @@
     padding: 32px 24px;
   }
 }
+
+/* Searchable Job Role Dropdown List styling */
+.searchable-role-dropdown {
+  backdrop-filter: blur(16px);
+  background-color: var(--bg-card) !important;
+}
+
+.role-dropdown-item {
+  color: var(--text-body) !important;
+}
+
+.role-dropdown-item:hover {
+  background-color: var(--primary-light) !important;
+  color: var(--primary-color) !important;
+}

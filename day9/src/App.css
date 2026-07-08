@@ -1,26 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Outfit:wght@300;400;500;600;700&display=swap');
 
-/* --- SPORTS ZONE THEME VARIABLES --- */
 .day-study {
-  --bg-app: #060a0f;
-  --bg-card: rgba(10, 16, 26, 0.8);
-  --bg-accent: rgba(0, 200, 100, 0.06);
-  --text-main: #94a3b8;
-  --text-title: #f0f6ff;
-  --text-muted: #475569;
-  --accent: #00c864; /* Stadium Electric Green */
-  --accent-light: rgba(0, 200, 100, 0.10);
-  --accent-border: rgba(0, 200, 100, 0.35);
-  --border: rgba(255, 255, 255, 0.06);
-  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 10px 20px -5px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.65);
-  --highlighter-yellow: rgba(251, 191, 36, 0.18);
-  --highlighter-green: rgba(0, 200, 100, 0.18);
-  --highlighter-pink: rgba(239, 68, 68, 0.18);
-  --grid-line: rgba(0, 200, 100, 0.025);
-  --margin-line: rgba(0, 200, 100, 0.1);
-  --navbar-bg: rgba(6, 10, 15, 0.92);
+  --bg-app: #f8fafc;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-accent: rgba(16, 185, 129, 0.06);
+  --text-main: #334155;
+  --text-title: #0f172a;
+  --text-muted: #64748b;
+  --accent: #10b981; /* Stadium Emerald Green */
+  --accent-light: rgba(16, 185, 129, 0.1);
+  --accent-border: rgba(16, 185, 129, 0.3);
+  --border: rgba(15, 23, 42, 0.08);
+  --shadow-sm: 0 2px 8px -1px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 12px 24px -4px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 24px 36px -4px rgba(15, 23, 42, 0.1);
+  --highlighter-yellow: rgba(252, 211, 77, 0.35);
+  --highlighter-green: rgba(16, 185, 129, 0.25);
+  --highlighter-pink: rgba(248, 113, 113, 0.25);
+  --grid-line: rgba(16, 185, 129, 0.05);
+  --margin-line: rgba(239, 68, 68, 0.25);
+  --navbar-bg: rgba(248, 250, 252, 0.85);
 }
 
 
@@ -40,33 +39,13 @@
   padding-bottom: 40px;
 }
 
-/* Paper Grid lines for student theme background */
+/* Premium layout container without notebook decorations */
 .app-wrapper::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-  background-image: 
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: 28px 28px;
-  z-index: 1;
+  display: none;
 }
 
-/* Red margin line in light mode */
 .day-study::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 60px;
-  width: 2px;
-  height: 100%;
-  background-color: var(--margin-line);
-  pointer-events: none;
-  z-index: 1;
+  display: none;
 }
 
 /* --- NAVBAR STYLING --- */
@@ -272,25 +251,13 @@
   overflow: hidden;
 }
 
-/* Notebook ring binders on the top edge of hero */
+/* Notebook ring binders hidden */
 .hero-banner::before {
-  content: "";
-  position: absolute;
-  top: -12px;
-  left: 0;
-  right: 0;
-  height: 24px;
-  background-image: radial-gradient(circle, var(--border) 6px, transparent 7px);
-  background-size: 32px 100%;
+  display: none;
 }
 
 .hero-grid-doodle {
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(var(--border) 1px, transparent 1px);
-  background-size: 16px 16px;
-  opacity: 0.4;
-  pointer-events: none;
+  display: none;
 }
 
 .hero-content {
@@ -2256,13 +2223,32 @@
   z-index: 2;
 }
 
+.footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 8px 0;
+}
+
+.footer-nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.footer-nav-link:hover {
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
 .footer-notebook-decor {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background-image: repeating-linear-gradient(90deg, var(--accent) 0px, var(--accent) 20px, transparent 20px, transparent 40px);
+  display: none;
 }
 
 .footer-content {
@@ -2448,14 +2434,14 @@
    NEW: DARK GLASSMORPHISM THEME ADDITIONS
    ============================================= */
 
-/* Override product-image-container bg for dark theme */
+/* Override product-image-container bg for light theme */
 .day-study .product-image-container {
-  background: #0d1117;
+  background: #f1f5f9;
 }
 
-/* Override backpack customizer canvas for dark theme */
+/* Override backpack customizer canvas for light theme */
 .day-study .backpack-customizer-canvas {
-  background: #0d1117;
+  background: #f1f5f9;
 }
 
 /* --- HERO GLOW --- */
@@ -2736,16 +2722,16 @@
   margin-bottom: 12px;
 }
 
-/* --- GLASS CARD EFFECT for dark theme --- */
+/* --- GLASS CARD EFFECT for light theme --- */
 .day-study .product-card {
-  background: rgba(17, 24, 39, 0.6);
-  border-color: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(15, 23, 42, 0.08);
   backdrop-filter: blur(12px);
 }
 
 .day-study .product-card:hover {
   border-color: var(--accent);
-  box-shadow: 0 0 0 1px var(--accent), 0 20px 40px rgba(20, 184, 166, 0.12);
+  box-shadow: 0 0 0 1px var(--accent), 0 20px 40px rgba(16, 185, 129, 0.12);
 }
 
 /* Tag pills for dark theme */
@@ -2911,47 +2897,49 @@
 
 /* ---- HERO BANNER sports adjustments ---- */
 .day-study .hero-banner {
-  background: rgba(10, 16, 26, 0.6);
-  border-color: rgba(0, 200, 100, 0.1);
-  backdrop-filter: blur(18px);
+  background: linear-gradient(135deg, #ffffff 0%, rgba(16, 185, 129, 0.04) 100%);
+  border-color: rgba(16, 185, 129, 0.15);
+  box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.1), var(--shadow-md);
+  backdrop-filter: blur(12px);
 }
 
 /* ---- NAVBAR sports bg ---- */
 .day-study .student-navbar {
-  border-bottom-color: rgba(0, 200, 100, 0.08);
+  border-bottom-color: rgba(16, 185, 129, 0.1);
   background: var(--navbar-bg);
 }
 
 /* ---- SEARCH INPUT sports ---- */
 .day-study .search-input {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.07);
+  background: rgba(15, 23, 42, 0.03);
+  border-color: rgba(15, 23, 42, 0.08);
   color: var(--text-main);
 }
 .day-study .search-input::placeholder { color: var(--text-muted); }
 .day-study .search-input:focus {
-  background: rgba(0, 200, 100, 0.04);
+  background: #ffffff;
   border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
 }
 
 /* ---- TOOLBAR SELECT sports ---- */
 .day-study .toolbar-select {
-  background: rgba(10, 16, 26, 0.7);
-  border-color: rgba(255, 255, 255, 0.07);
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.08);
   color: var(--text-main);
 }
 
 /* ---- FOOTER sports ---- */
 .day-study .student-footer {
-  background: rgba(6, 10, 15, 0.5);
-  border-top-color: rgba(0, 200, 100, 0.07);
+  background: #ffffff;
+  border-top-color: rgba(16, 185, 129, 0.1);
   backdrop-filter: blur(12px);
 }
 
 /* ---- BUDGET INDICATOR ---- */
 .day-study .budget-mini-indicator {
-  background: rgba(0, 200, 100, 0.05);
-  border-color: rgba(0, 200, 100, 0.22);
+  background: rgba(16, 185, 129, 0.04);
+  border-color: rgba(16, 185, 129, 0.2);
 }
 
 /* ---- CART CUSTOMS DISPLAY ---- */
@@ -2961,4 +2949,31 @@
   color: var(--accent);
   font-weight: 500;
   margin-top: 2px;
+}
+
+/* ---- BUY NOW CARD BUTTON ---- */
+.buy-now-card-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.2);
+  transition: all 0.2s ease;
+}
+
+.buy-now-card-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(245, 158, 11, 0.35);
+  filter: brightness(1.05);
+}
+
+.buy-now-card-btn:active {
+  transform: translateY(0);
 }

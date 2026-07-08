@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { ShopContext } from '../context/ShopContext';
 import { products } from '../data/products';
-import { Star, Check, Award, ArrowLeft, ShoppingCart, Plus, Minus } from 'lucide-react';
+import { Star, Check, Award, ArrowLeft, ShoppingCart, Plus, Minus, Zap } from 'lucide-react';
 import JerseyMockup from '../components/JerseyMockup';
 
 export default function ProductDetail() {
@@ -106,14 +106,14 @@ export default function ProductDetail() {
   };
 
   return (
-    <div className="product-detail-page container" style={{ maxWidth: '1200px', margin: '40px auto', padding: '0 20px', color: '#f8fafc' }}>
+    <div className="product-detail-page container" style={{ maxWidth: '1200px', margin: '40px auto', padding: '0 20px', color: '#0f172a' }}>
       {/* Back navigation */}
-      <button onClick={() => navigate(-1)} className="view-all-btn" style={{ marginBottom: '24px', display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'transparent', border: 'none', cursor: 'pointer', color: '#94a3b8' }}>
+      <button onClick={() => navigate(-1)} className="view-all-btn" style={{ marginBottom: '24px', display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'transparent', border: 'none', cursor: 'pointer', color: '#64748b' }}>
         <ArrowLeft size={16} />
         <span>Go Back</span>
       </button>
 
-      <div className="modal-content-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px', background: '#0d1520', padding: '30px', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)' }}>
+      <div className="modal-content-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px', background: '#f1f5f9', padding: '30px', borderRadius: '16px', border: '1px solid rgba(15,23,42,0.08)' }}>
         {/* Left Column: Visual Mockup / Image */}
         <div className="modal-visual-column">
           {product.customType === 'badges' ? (
@@ -422,6 +422,24 @@ export default function ProductDetail() {
             >
               <ShoppingCart size={18} />
               <span>Add {quantity} to Cart — ₹{(product.price * quantity).toLocaleString('en-IN')}</span>
+            </button>
+
+            {/* Buy Now button */}
+            <button 
+              onClick={() => navigate(`/buynow/${product.id}`)}
+              style={{
+                width: '100%', padding: '16px', borderRadius: '12px',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',
+                fontSize: '16px', fontWeight: '800', cursor: 'pointer', border: 'none',
+                background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+                color: '#fff', boxShadow: '0 4px 14px rgba(245,158,11,0.35)',
+                transition: 'transform 0.15s ease, box-shadow 0.15s ease'
+              }}
+              onMouseEnter={e => { e.currentTarget.style.transform='translateY(-2px)'; e.currentTarget.style.boxShadow='0 8px 20px rgba(245,158,11,0.4)'; }}
+              onMouseLeave={e => { e.currentTarget.style.transform='translateY(0)'; e.currentTarget.style.boxShadow='0 4px 14px rgba(245,158,11,0.35)'; }}
+            >
+              <Zap size={18} />
+              <span>Buy Now — &#x20B9;{(product.price * quantity).toLocaleString('en-IN')}</span>
             </button>
           </div>
         </div>

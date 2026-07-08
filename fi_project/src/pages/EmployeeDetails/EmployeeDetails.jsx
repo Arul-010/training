@@ -58,11 +58,7 @@ const EmployeeDetails = () => {
         <div className="card details-profile-card fade-in">
           {/* Top Banner / Avatar segment */}
           <div className="details-hero-section">
-            <img
-              src={getAvatarUrl(employee.name, employee.avatar)}
-              alt={employee.name}
-              className="details-avatar"
-            />
+            <div className="details-avatar"></div>
             <div className="details-meta">
               <div className="details-name-row">
                 <h2 className="details-full-name">{employee.name}</h2>

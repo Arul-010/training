@@ -84,6 +84,75 @@ const Dashboard = () => {
         <MetricCard icon={FiDollarSign}   colorVariant="teal"   label="Avg. Salary"      value={formatCurrency(averageSalary)} />
       </section>
 
+      {/* ── Live Attendance Monitoring Section ── */}
+      <section className="card" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border-color)', paddingBottom: '14px' }}>
+          <div>
+            <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-title)', margin: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>
+              📊 Live Attendance Monitoring
+            </h3>
+            <p style={{ fontSize: '0.8rem', color: 'var(--text-light)', margin: '4px 0 0 0' }}>
+              Real-time daily presence, leave statistics, and roster status.
+            </p>
+          </div>
+          <span 
+            style={{ 
+              background: 'var(--primary-light)', 
+              color: 'var(--primary-color)', 
+              padding: '4px 12px', 
+              borderRadius: '99px', 
+              fontSize: '0.75rem', 
+              fontWeight: 700 
+            }}
+          >
+            Today: {Math.round((activeEmployees / (activeEmployees + onLeaveEmployees || 1)) * 100)}% Present
+          </span>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '20px' }}>
+          {/* Active Workers card */}
+          <div style={{ background: 'var(--bg-success)', border: '1px solid rgba(34,197,94,0.15)', padding: '16px', borderRadius: 'var(--border-radius-sm)', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-success)', textTransform: 'uppercase' }}>
+              Active Today 🟢
+            </span>
+            <strong style={{ fontSize: '2rem', color: 'var(--text-success)', lineHeight: '1.2' }}>
+              {activeEmployees}
+            </strong>
+            <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Workers on site & online</span>
+          </div>
+
+          {/* On Leave card */}
+          <div style={{ background: 'var(--bg-warning)', border: '1px solid rgba(245,158,11,0.15)', padding: '16px', borderRadius: 'var(--border-radius-sm)', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-warning)', textTransform: 'uppercase' }}>
+              On Leave 🟡
+            </span>
+            <strong style={{ fontSize: '2rem', color: 'var(--text-warning)', lineHeight: '1.2' }}>
+              {onLeaveEmployees}
+            </strong>
+            <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Staff out of office today</span>
+          </div>
+
+          {/* Roster overview bar */}
+          <div style={{ gridColumn: 'span 2', display: 'flex', flexDirection: 'column', justifyContext: 'center', gap: '8px', padding: '8px 0' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem' }}>
+              <span style={{ color: 'var(--text-muted)' }}>Roster Capacity Rate</span>
+              <strong style={{ color: 'var(--text-title)' }}>
+                {activeEmployees} of {activeEmployees + onLeaveEmployees} Present
+              </strong>
+            </div>
+            <div style={{ height: '10px', background: 'var(--bg-app)', border: '1px solid var(--border-color)', borderRadius: '6px', overflow: 'hidden' }}>
+              <div 
+                style={{ 
+                  height: '100%', 
+                  background: 'linear-gradient(90deg, var(--primary-color) 0%, var(--color-success) 100%)', 
+                  width: `${(activeEmployees / (activeEmployees + onLeaveEmployees || 1)) * 100}%` 
+                }} 
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── Main Split: Distribution + Recent Hires ───────────── */}
       <div className="dashboard-grid-split">
 

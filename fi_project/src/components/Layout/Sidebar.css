@@ -8,9 +8,15 @@
   color: var(--sidebar-text);
   display: flex;
   flex-direction: column;
-  z-index: 100;
+  z-index: 1001; /* Keep it above navbar and layout */
   transition: transform var(--transition-normal);
   border-right: 1px solid rgba(255, 255, 255, 0.03);
+  transform: translateX(-100%);
+}
+
+.app-sidebar.open {
+  transform: translateX(0);
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.15);
 }
 
 .sidebar-overlay-mobile {
@@ -21,7 +27,7 @@
   bottom: 0;
   background-color: rgba(15, 23, 42, 0.4);
   backdrop-filter: blur(4px);
-  z-index: 99;
+  z-index: 1000;
   animation: fadeIn var(--transition-fast) forwards;
 }
 
@@ -55,7 +61,7 @@
 }
 
 .sidebar-close-mobile {
-  display: none;
+  display: flex;
   color: var(--sidebar-text);
   font-size: 1.4rem;
   background: none;
@@ -158,18 +164,4 @@
 }
 
 /* Responsive screen rules */
-@media (max-width: 1024px) {
-  .app-sidebar {
-    transform: translateX(-100%);
-    box-shadow: none;
-  }
-
-  .app-sidebar.open {
-    transform: translateX(0);
-    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.25);
-  }
-
-  .sidebar-close-mobile {
-    display: flex;
-  }
-}
+/* Sidebar acts as a slide-out drawer globally on all screens */

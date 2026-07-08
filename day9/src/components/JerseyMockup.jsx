@@ -469,7 +469,7 @@ export default function JerseyMockup({ teamName, customName, customNumber, heigh
   return (
     <svg 
       viewBox="0 0 540 320" 
-      style={{ width: "100%", height: height, background: "#0d121c", borderRadius: "12px", border: "1px solid rgba(255,255,255,0.06)" }}
+      style={{ width: "100%", height: height, background: "#f1f5f9", borderRadius: "12px", border: "1px solid rgba(15,23,42,0.08)" }}
     >
       <defs>
         {/* Soft fabric crease / fold gradients */}
