@@ -121,6 +121,31 @@ export const EmployeeProvider = ({ children }) => {
     ];
   });
 
+  // ─── Leave Applications State ─────────────────────────────────────────────
+  const [leaveApplications, setLeaveApplications] = useState(() => {
+    const saved = localStorage.getItem('ems_leave_applications');
+    if (saved) {
+      try { return JSON.parse(saved); }
+      catch (e) { return []; }
+    }
+    // Seed data
+    return [
+      {
+        id: 'lv1',
+        employeeId: 'EMP-1002',
+        employeeName: 'Sarah Jenkins',
+        reason: 'Medical checkup and recovery.',
+        startDate: '2026-07-15',
+        endDate: '2026-07-18',
+        requestedDays: 3,
+        approvedDays: null,
+        status: 'Pending',
+        appliedOn: '2026-07-07',
+        adminNote: ''
+      }
+    ];
+  });
+
   // ─── Persist to localStorage ──────────────────────────────────────────────
   useEffect(() => { localStorage.setItem('ems_employees', JSON.stringify(employees)); }, [employees]);
   useEffect(() => {
@@ -128,6 +153,7 @@ export const EmployeeProvider = ({ children }) => {
     else             localStorage.removeItem('ems_current_user');
   }, [currentUser]);
   useEffect(() => { localStorage.setItem('ems_queries', JSON.stringify(queries)); }, [queries]);
+  useEffect(() => { localStorage.setItem('ems_leave_applications', JSON.stringify(leaveApplications)); }, [leaveApplications]);
 
   // ─── Toast Helpers ────────────────────────────────────────────────────────
   const triggerToast = (message, type = 'success') => {
@@ -202,6 +228,34 @@ export const EmployeeProvider = ({ children }) => {
     triggerToast('Query marked as resolved!', 'success');
   };
 
+  // ─── Leave Application actions ────────────────────────────────────────────
+  const applyLeave = (employeeId, { reason, startDate, endDate, requestedDays }) => {
+    const emp = employees.find(e => e.id === employeeId);
+    const newApp = {
+      id: 'lv-' + Date.now() + Math.random().toString(36).substr(2, 5),
+      employeeId,
+      employeeName: emp ? emp.name : 'Unknown Employee',
+      reason: reason.trim(),
+      startDate,
+      endDate,
+      requestedDays,
+      approvedDays: null,
+      status: 'Pending',
+      appliedOn: new Date().toISOString().split('T')[0],
+      adminNote: ''
+    };
+    setLeaveApplications(prev => [newApp, ...prev]);
+    triggerToast('Leave application submitted successfully!', 'success');
+  };
+
+  // Admin: update approved days, status, or admin note on a leave application
+  const updateLeaveApplication = (id, changes) => {
+    setLeaveApplications(prev =>
+      prev.map(lv => lv.id === id ? { ...lv, ...changes } : lv)
+    );
+    triggerToast('Leave application updated!', 'success');
+  };
+
   // ─── CRUD — POST (Add Employee) ───────────────────────────────────────────
   const addEmployee = async (employee) => {
     setLoading(true);
@@ -267,10 +321,13 @@ export const EmployeeProvider = ({ children }) => {
         confirmModal,
         currentUser,
         queries,
+        leaveApplications,
         login,
         logout,
         addQuery,
         resolveQuery,
+        applyLeave,
+        updateLeaveApplication,
         triggerToast,
         removeToast,
         showConfirmation,

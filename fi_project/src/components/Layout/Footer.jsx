@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="footer-inner">
         {/* Left — Branding */}
         <div className="footer-brand">
-          <span className="footer-logo">💼 EMS Corp</span>
+          <span className="footer-logo">💼 ASD corp</span>
           <p className="footer-tagline">
             Built with <FiHeart className="footer-heart" /> for modern HR teams
           </p>
@@ -28,7 +28,7 @@ const Footer = () => {
 
         {/* Right — Copyright */}
         <p className="footer-copy">
-          &copy; {year} EMS Corp. All rights reserved.
+          &copy; {year} ASD corp. All rights reserved.
         </p>
       </div>
     </footer>

@@ -9,13 +9,13 @@ export const generateEmployeeId = () => {
 /**
  * Formats a currency number into a standard locale string
  * @param {number} value
- * @returns {string} Formatted currency e.g. "$120,000"
+ * @returns {string} Formatted currency e.g. "₹1,20,000"
  */
 export const formatCurrency = (value) => {
-  if (value === undefined || value === null) return '$0';
-  return new Intl.NumberFormat('en-US', {
+  if (value === undefined || value === null) return '₹0';
+  return new Intl.NumberFormat('en-IN', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'INR',
     maximumFractionDigits: 0
   }).format(value);
 };

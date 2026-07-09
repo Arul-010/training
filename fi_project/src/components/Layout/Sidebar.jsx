@@ -32,7 +32,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         <div className="sidebar-header">
           <div className="sidebar-logo-container">
             <span className="logo-icon">💼</span>
-            <h2 className="logo-text">EMS Corp</h2>
+            <h2 className="logo-text">ASD corp</h2>
           </div>
           <button
             className="sidebar-close-mobile"

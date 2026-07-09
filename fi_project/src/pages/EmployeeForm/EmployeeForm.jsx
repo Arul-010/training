@@ -378,7 +378,7 @@ const EmployeeForm = () => {
 
               {/* Salary */}
               <Input
-                label="Annual Salary ($)"
+                label="Annual Salary (₹)"
                 id="salary"
                 name="salary"
                 type="number"

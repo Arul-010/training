@@ -26,7 +26,7 @@ const Login = () => {
       <div className="login-card fade-in">
         <div className="login-header">
           <span className="login-logo">💼</span>
-          <h2>EMS Corp</h2>
+          <h2>ASD corp</h2>
           <p>Choose your workspace role to gain access to the dashboard.</p>
         </div>
 
