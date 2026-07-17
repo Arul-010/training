@@ -1,0 +1,222 @@
+.employee-details-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.details-header-actions {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.details-profile-card {
+  padding: 48px;
+  text-align: left;
+}
+
+.details-profile-card:hover {
+  transform: none; /* Disable cards hover slide on detail card to keep it steady */
+  border-color: rgba(226, 232, 240, 0.8);
+}
+
+/* Header Avatar block */
+.details-hero-section {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.details-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: var(--border-radius-full);
+  background-color: var(--bg-card);
+  border: 3px solid var(--bg-card);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.1), 0 0 0 3px var(--border-color);
+  flex-shrink: 0;
+}
+
+.details-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.details-name-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.details-full-name {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-title);
+  letter-spacing: -0.8px;
+}
+
+.details-role-display {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-body);
+}
+
+.details-id-display {
+  font-size: 0.825rem;
+  color: var(--text-light);
+  font-weight: 600;
+  font-family: monospace;
+  background-color: var(--secondary-light);
+  padding: 3px 8px;
+  border-radius: var(--border-radius-sm);
+  width: fit-content;
+}
+
+.details-divider {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border-color) 0%, rgba(226, 232, 240, 0.2) 100%);
+  margin: 40px 0;
+}
+
+/* Info Grid Columns */
+.details-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 64px;
+}
+
+.details-section-column {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.details-section-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-title);
+  border-left: 3px solid var(--primary-color);
+  padding-left: 12px;
+  margin-bottom: 8px;
+  letter-spacing: -0.2px;
+}
+
+.details-info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.info-row-icon {
+  font-size: 1.3rem;
+  color: var(--text-light);
+  margin-top: 2px;
+  background-color: var(--secondary-light);
+  padding: 8px;
+  box-sizing: content-box;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.info-row-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+}
+
+.info-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-light);
+  font-weight: 700;
+}
+
+.info-value {
+  font-size: 0.975rem;
+  font-weight: 600;
+  color: var(--text-title);
+}
+
+.info-value.email-link {
+  color: var(--primary-color);
+}
+
+.info-value.email-link:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+.salary-val {
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+/* Footer panel spacing */
+.details-footer-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 32px;
+  margin-top: 8px;
+}
+
+/* Not found card */
+.details-not-found-card {
+  padding: 48px;
+  max-width: 520px;
+  margin: 40px auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.details-not-found-card:hover {
+  transform: none;
+}
+
+.not-found-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-title);
+}
+
+.not-found-desc {
+  font-size: 0.925rem;
+  color: var(--text-body);
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+/* Responsive updates */
+@media (max-width: 768px) {
+  .details-hero-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  
+  .details-info-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  
+  .details-footer-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .details-footer-actions button {
+    width: 100%;
+  }
+  
+  .details-profile-card {
+    padding: 32px 24px;
+  }
+}

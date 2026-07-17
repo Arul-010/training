@@ -1,0 +1,7 @@
+com\employee\automation\tests\LoginTest.class
+com\employee\automation\base\BaseTest.class
+com\employee\automation\tests\QueriesTest.class
+com\employee\automation\tests\EmployeePortalTest.class
+com\employee\automation\tests\DashboardTest.class
+com\employee\automation\tests\EmployeeRosterTest.class
+com\employee\automation\tests\ProjectsTest.class

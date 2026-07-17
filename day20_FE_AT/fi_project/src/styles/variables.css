@@ -1,0 +1,144 @@
+:root {
+  /* ─── Light Theme: Nordic Glass (Default) ─── */
+  --primary-color: #6366F1;
+  --primary-hover: #4F46E5;
+  --primary-light: rgba(99, 102, 241, 0.06);
+  --primary-glow: rgba(99, 102, 241, 0.08);
+
+  /* Brand Secondary: Slate Obsidian */
+  --secondary-color: #0F172A;
+  --secondary-hover: #020617;
+  --secondary-light: #F8FAFC;
+
+  /* Sidebar Theme: Nordic Glass Light */
+  --bg-sidebar: rgba(255, 255, 255, 0.75);
+  --sidebar-hover: rgba(99, 102, 241, 0.08);
+  --sidebar-active: rgba(99, 102, 241, 0.12);
+  --sidebar-text: #64748B;
+  --sidebar-text-active: #6366F1;
+
+  /* App Surface Colors: Clean Slate */
+  --bg-app: #F1F5F9;
+  --bg-card: #FFFFFF;
+
+  /* Borders: Premium Soft Glass */
+  --border-color: rgba(99, 102, 241, 0.08);
+  --border-hover: rgba(99, 102, 241, 0.15);
+  --border-focus: #6366F1;
+
+  /* Text Layers */
+  --text-title: #0F172A;
+  --text-body: #334155;
+  --text-muted: #64748B;
+  --text-light: #94A3B8;
+
+  /* Status / Feedback Accents */
+  --color-success: #10B981;
+  --bg-success: rgba(16, 185, 129, 0.06);
+  --text-success: #047857;
+
+  --color-warning: #F59E0B;
+  --bg-warning: rgba(245, 158, 11, 0.06);
+  --text-warning: #B45309;
+
+  --color-danger: #EF4444;
+  --bg-danger: rgba(239, 68, 68, 0.06);
+  --text-danger: #B91C1C;
+
+  --color-info: #3B82F6;
+  --bg-info: rgba(59, 130, 246, 0.06);
+  --text-info: #1D4ED8;
+
+  /* Border Radius */
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 20px;
+  --border-radius-full: 9999px;
+
+  /* Shadows: Deep and Soft */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 12px 30px -10px rgba(15, 23, 42, 0.04), 0 4px 12px -2px rgba(15, 23, 42, 0.02);
+  --shadow-lg: 0 30px 60px -15px rgba(15, 23, 42, 0.08), 0 10px 20px -5px rgba(15, 23, 42, 0.03);
+  --shadow-hover: 0 20px 25px -5px rgba(99, 102, 241, 0.08), 0 10px 10px -5px rgba(99, 102, 241, 0.03);
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Transitions */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Layout Dimensions */
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 76px;
+  --header-height: 76px;
+
+  /* Header Glass theme */
+  --navbar-bg: rgba(255, 255, 255, 0.7);
+  --navbar-text: #0F172A;
+  --navbar-border: rgba(99, 102, 241, 0.08);
+  --navbar-shadow: 0 4px 30px rgba(15, 23, 42, 0.03);
+}
+
+[data-theme='dark'] {
+  /* ─── Dark Theme: Neon Obsidian ─── */
+  --primary-color: #8b5cf6;
+  --primary-hover: #7c3aed;
+  --primary-light: rgba(139, 92, 246, 0.12);
+  --primary-glow: rgba(139, 92, 246, 0.22);
+
+  --secondary-color: #ffffff;
+  --secondary-hover: #f3f4f6;
+  --secondary-light: #181d37;
+
+  /* Sidebar Theme: Obsidian Dark */
+  --bg-sidebar: #090b14;
+  --sidebar-hover: rgba(139, 92, 246, 0.12);
+  --sidebar-active: rgba(139, 92, 246, 0.2);
+  --sidebar-text: #718096;
+  --sidebar-text-active: #8b5cf6;
+
+  /* App Surface Colors: Obsidian Dark */
+  --bg-app: #0c0f1d;
+  --bg-card: #13192e;
+
+  /* Borders: Premium Soft Glass Dark */
+  --border-color: #1e2544;
+  --border-hover: rgba(139, 92, 246, 0.25);
+  --border-focus: #8b5cf6;
+
+  /* Text Layers */
+  --text-title: #ffffff;
+  --text-body: #a0aec0;
+  --text-muted: #718096;
+  --text-light: #4a5568;
+
+  /* Status / Feedback Accents (Dark Balanced) */
+  --color-success: #34D399;
+  --bg-success: rgba(52, 211, 153, 0.12);
+  --text-success: #34D399;
+
+  --color-warning: #fbbf24;
+  --bg-warning: rgba(251, 191, 36, 0.12);
+  --text-warning: #fbbf24;
+
+  --color-danger: #f87171;
+  --bg-danger: rgba(248, 113, 113, 0.12);
+  --text-danger: #f87171;
+
+  --color-info: #60a5fa;
+  --bg-info: rgba(96, 165, 250, 0.12);
+  --text-info: #60a5fa;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 12px 30px -10px rgba(0, 0, 0, 0.5), 0 4px 12px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 30px 60px -15px rgba(0, 0, 0, 0.7), 0 10px 20px -5px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 20px 25px -5px rgba(139, 92, 246, 0.15), 0 10px 10px -5px rgba(139, 92, 246, 0.05);
+
+  /* Header Glass theme */
+  --navbar-bg: #090b14;
+  --navbar-text: #ffffff;
+  --navbar-border: #1e2544;
+  --navbar-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}

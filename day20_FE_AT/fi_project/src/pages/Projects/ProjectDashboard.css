@@ -1,0 +1,592 @@
+/* Project Dashboard Stylesheet */
+
+.project-dashboard-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+/* ── Dashboard Navigation & Title ── */
+.dashboard-navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 20px;
+}
+
+.back-to-board-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  background: var(--bg-card);
+  transition: all var(--transition-fast);
+}
+
+.back-to-board-btn:hover {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  background: var(--primary-light);
+  transform: translateX(-3px);
+}
+
+.dashboard-header-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.project-dashboard-icon {
+  font-size: 2.25rem;
+}
+
+.dashboard-header-title h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-title);
+  letter-spacing: -0.4px;
+}
+
+.project-dashboard-desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ── Row 1: Milestones & Launch Date ── */
+.dashboard-row-top {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-row-top {
+    grid-template-columns: 1fr;
+  }
+}
+
+.milestones-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px 40px;
+  overflow: hidden;
+}
+
+.timeline-progress-bar-container {
+  position: absolute;
+  top: 50px;
+  left: 10%;
+  right: 10%;
+  height: 4px;
+  background: #E2E8F0;
+  border-radius: var(--border-radius-full);
+  z-index: 1;
+}
+
+.timeline-progress-bar-fill {
+  height: 100%;
+  background: var(--color-success);
+  border-radius: var(--border-radius-full);
+  transition: width 0.4s ease;
+}
+
+.milestones-steps {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 2;
+}
+
+.milestone-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  text-align: center;
+}
+
+.milestone-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: all var(--transition-normal);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* Completed Phase Style */
+.milestone-circle.completed {
+  background: var(--color-success);
+  color: #ffffff;
+  border: 2px solid var(--color-success);
+}
+
+.milestone-step.completed .milestone-name {
+  color: var(--text-title);
+  font-weight: 700;
+}
+
+.milestone-step.completed .milestone-status {
+  color: var(--color-success);
+  font-weight: 600;
+}
+
+/* In Progress Phase Style */
+.milestone-circle.in-progress {
+  background: var(--bg-card);
+  color: var(--color-success);
+  border: 3px solid var(--color-success);
+}
+
+.milestone-step.in-progress .milestone-name {
+  color: var(--text-title);
+  font-weight: 700;
+}
+
+.milestone-step.in-progress .milestone-status {
+  color: var(--color-success);
+  font-weight: 600;
+}
+
+/* Waiting Phase Style */
+.milestone-circle.waiting {
+  background: var(--bg-card);
+  color: var(--text-light);
+  border: 2px solid var(--border-color);
+}
+
+.milestone-step.waiting .milestone-name {
+  color: var(--text-muted);
+}
+
+.milestone-step.waiting .milestone-status {
+  color: var(--text-light);
+}
+
+.milestone-name {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.milestone-status {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Projected Launch Date Box */
+.launch-date-box {
+  background: #D1FAE5; /* Light green */
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: var(--border-radius-md);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast);
+}
+
+.launch-date-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.1);
+}
+
+.launch-box-label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #065F46; /* Dark green */
+}
+
+.launch-box-center {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.launch-box-flag-icon {
+  font-size: 2.25rem;
+}
+
+.launch-box-time h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #047857;
+  margin: 0;
+}
+
+.launch-box-time p {
+  font-size: 0.8rem;
+  color: #065F46;
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+/* ── Grid Layouts for Sections ── */
+.dashboard-grid-two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-grid-two-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card-section-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-title);
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: -0.2px;
+}
+
+/* ── Project Budget Card Styles ── */
+.budget-flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+  padding: 10px 0;
+}
+
+@media (max-width: 480px) {
+  .budget-flex-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.budget-chart-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  height: 160px;
+  flex: 1;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 4px;
+  position: relative;
+}
+
+.budget-chart-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  color: var(--text-light);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding-right: 8px;
+}
+
+.budget-chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  height: 100%;
+  flex: 1;
+}
+
+.budget-bar-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 100%;
+}
+
+.budget-bar {
+  width: 28px;
+  border-radius: 4px 4px 0 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.budget-bar:hover {
+  transform: scaleY(1.05);
+  opacity: 0.9;
+}
+
+.total-bar {
+  background-color: #1E293B; /* Blackish/slate */
+}
+
+.used-bar {
+  background-color: var(--color-success); /* Green */
+}
+
+.target-bar {
+  background-color: #94A3B8; /* Gray */
+}
+
+.budget-metrics-details {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 200px;
+}
+
+.budget-metric-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.budget-metric-row.align-center {
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.budget-metric-lbl {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.budget-metric-lbl-sub {
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+.budget-metric-val {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-title);
+}
+
+.remaining-val {
+  color: var(--color-success);
+}
+
+.status-indicator-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.15);
+}
+
+.red-dot {
+  background-color: var(--color-danger);
+}
+
+.red-text {
+  color: var(--color-danger);
+}
+
+.font-bold {
+  font-weight: 800;
+}
+
+.budget-chart-legend {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 24px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 14px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.legend-color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.total-dot { background-color: #1E293B; }
+.used-dot { background-color: var(--color-success); }
+.target-dot { background-color: #94A3B8; }
+
+/* ── General Table Styles ── */
+.table-responsive-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 10px;
+}
+
+.dashboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.85rem;
+}
+
+.dashboard-table th {
+  padding: 10px 12px;
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--border-color);
+  background: var(--bg-app);
+}
+
+.dashboard-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-body);
+}
+
+.dashboard-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Overdue Badge styles */
+.overdue-days-badge {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: inline-block;
+  text-align: center;
+}
+
+.yellow-overdue {
+  background-color: #FEF3C7;
+  color: #D97706;
+}
+
+.orange-overdue {
+  background-color: #FEE2E2;
+  color: #F59E0B;
+}
+
+.lightred-overdue {
+  background-color: #FEE2E2;
+  color: #EF4444;
+}
+
+.red-overdue {
+  background-color: #FEE2E2;
+  color: #DC2626;
+  font-weight: 800;
+}
+
+.task-name-cell {
+  font-weight: 500;
+  color: var(--text-title);
+}
+
+.deadline-cell {
+  color: var(--text-muted);
+}
+
+.font-medium {
+  font-weight: 600;
+}
+
+/* ── Workload Card Styles ── */
+.workload-chart-container {
+  display: flex;
+  align-items: flex-end;
+  height: 220px;
+  padding: 20px 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.workload-chart-bars {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+  gap: 12px;
+}
+
+.workload-bar-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.workload-bar-percent-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.workload-bar {
+  width: 32px;
+  background-color: #14532D; /* Dark green */
+  border-radius: 4px 4px 0 0;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.workload-bar:hover {
+  background-color: #15803d;
+  transform: scaleY(1.03);
+}
+
+.workload-bar-name-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-body);
+  margin-top: 4px;
+}
+
+/* ── Upcoming Deadlines Table Styles ── */
+.deadline-workload-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.workload-mini-track {
+  width: 80px;
+  height: 8px;
+  background-color: #E2E8F0;
+  border-radius: var(--border-radius-full);
+  overflow: hidden;
+}
+
+.workload-mini-fill {
+  height: 100%;
+  background-color: var(--color-success);
+  border-radius: var(--border-radius-full);
+}
+
+.workload-mini-percent {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-body);
+}

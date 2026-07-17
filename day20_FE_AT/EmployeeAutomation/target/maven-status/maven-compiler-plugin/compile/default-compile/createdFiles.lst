@@ -1,0 +1,9 @@
+com\employee\automation\pages\QueriesPage.class
+com\employee\automation\pages\EmployeeListPage.class
+com\employee\automation\App.class
+com\employee\automation\pages\DashboardPage.class
+com\employee\automation\pages\LoginPage.class
+com\employee\automation\pages\EmployeePortalPage.class
+com\employee\automation\pages\ProjectsPage.class
+com\employee\automation\pages\EmployeeDetailsPage.class
+com\employee\automation\pages\EmployeeFormPage.class
