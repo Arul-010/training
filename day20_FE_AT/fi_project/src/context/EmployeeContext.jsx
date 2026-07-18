@@ -86,6 +86,17 @@ export const EmployeeProvider = ({ children }) => {
           // Filter out any employees that were deleted locally
           .filter(emp => !deletedIds.includes(emp.id));
 
+        // Ensure Arul Selvam (EMP-1001) is always present
+        const arulExists = formatted.some(emp => emp.id === 'EMP-1001');
+        if (!arulExists) {
+          const savedArul = savedList.find(e => e.id === 'EMP-1001');
+          const defaultArul = INITIAL_EMPLOYEES.find(e => e.id === 'EMP-1001') || INITIAL_EMPLOYEES[0];
+          formatted.unshift({
+            ...defaultArul,
+            ...savedArul
+          });
+        }
+
         setEmployees(formatted);
       }
     } catch (err) {

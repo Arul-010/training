@@ -1,78 +1,126 @@
 package com.employee.automation.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
-public class DashboardPage {
+/**
+ * Page Object for the Admin Dashboard page (/dashboard).
+ *
+ * <p>Covers the four KPI metric cards, the timeframe dropdown,
+ * and all sidebar navigation links.</p>
+ */
+public class DashboardPage extends BasePage {
 
-    private final WebDriver driver;
+    // ── @FindBy — Metric Cards ─────────────────────────────────────────────────
+
+    @FindBy(xpath = "//span[text()='Total Employees']/following-sibling::strong")
+    private WebElement totalEmployeesVal;
+
+    @FindBy(xpath = "//span[text()='Open Positions']/following-sibling::strong")
+    private WebElement openPositionsVal;
+
+    @FindBy(xpath = "//span[text()='Leave Requests']/following-sibling::strong")
+    private WebElement leaveRequestsVal;
+
+    @FindBy(xpath = "//span[text()='Late Inflows']/following-sibling::strong")
+    private WebElement lateInflowsVal;
+
+    // ── @FindBy — Timeframe Dropdown ───────────────────────────────────────────
+
+    @FindBy(className = "timeframe-badge-dropdown")
+    private WebElement timeframeDropdown;
+
+    // ── @FindBy — Sidebar Navigation ──────────────────────────────────────────
+
+    @FindBy(xpath = "//a[contains(@href, '/dashboard')]")
+    private WebElement dashboardLink;
+
+    /** Employees roster link — excludes /employees/new. */
+    @FindBy(xpath = "//a[contains(@href, '/employees') and not(contains(@href, '/new'))]")
+    private WebElement employeesLink;
+
+    @FindBy(xpath = "//a[contains(@href, '/projects')]")
+    private WebElement projectsLink;
+
+    @FindBy(xpath = "//a[contains(@href, '/queries')]")
+    private WebElement helpdeskLink;
+
+    @FindBy(xpath = "//a[contains(@href, '/employees/new')]")
+    private WebElement addEmployeeLink;
+
+    @FindBy(xpath = "//button[contains(@class,'sidebar-logout-btn-full') or contains(.,'Sign Out')]")
+    private WebElement signOutBtn;
+
+    // ── Constructor ────────────────────────────────────────────────────────────
 
     public DashboardPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
-    // Metric locators
-    private final By totalEmployeesVal = By.xpath("//span[text()='Total Employees']/following-sibling::strong");
-    private final By openPositionsVal = By.xpath("//span[text()='Open Positions']/following-sibling::strong");
-    private final By leaveRequestsVal = By.xpath("//span[text()='Leave Requests']/following-sibling::strong");
-    private final By lateInflowsVal = By.xpath("//span[text()='Late Inflows']/following-sibling::strong");
+    // ── Metric Getters ─────────────────────────────────────────────────────────
 
-    // Timeframe dropdown
-    private final By timeframeDropdown = By.className("timeframe-badge-dropdown");
-
-    // Sidebar navigation locators
-    private final By dashboardLink = By.xpath("//a[contains(@href, '/dashboard')]");
-    private final By employeesLink = By.xpath("//a[contains(@href, '/employees') and not(contains(@href, '/new'))]");
-    private final By projectsLink = By.xpath("//a[contains(@href, '/projects')]");
-    private final By helpdeskLink = By.xpath("//a[contains(@href, '/queries')]");
-    private final By addEmployeeLink = By.xpath("//a[contains(@href, '/employees/new')]");
-    private final By signOutBtn = By.xpath("//button[contains(@class, 'sidebar-logout-btn-full') or contains(., 'Sign Out')]");
-
+    /** @return text of the Total Employees KPI card. */
     public String getTotalEmployees() {
-        return driver.findElement(totalEmployeesVal).getText();
+        return waitForVisible(totalEmployeesVal).getText();
     }
 
+    /** @return text of the Open Positions KPI card. */
     public String getOpenPositions() {
-        return driver.findElement(openPositionsVal).getText();
+        return waitForVisible(openPositionsVal).getText();
     }
 
+    /** @return text of the Leave Requests KPI card. */
     public String getLeaveRequests() {
-        return driver.findElement(leaveRequestsVal).getText();
+        return waitForVisible(leaveRequestsVal).getText();
     }
 
+    /** @return text of the Late Inflows KPI card. */
     public String getLateInflows() {
-        return driver.findElement(lateInflowsVal).getText();
+        return waitForVisible(lateInflowsVal).getText();
     }
 
-    public void selectTimeframe(String value) {
-        WebElement dropdown = driver.findElement(timeframeDropdown);
-        Select select = new Select(dropdown);
-        select.selectByVisibleText(value);
+    // ── Timeframe Dropdown ─────────────────────────────────────────────────────
+
+    /**
+     * Select the chart timeframe by visible option text
+     * (e.g. "This Week", "This Month").
+     */
+    public void selectTimeframe(String visibleText) {
+        new Select(waitForVisible(timeframeDropdown))
+                .selectByVisibleText(visibleText);
     }
 
+    // ── Sidebar Navigation ─────────────────────────────────────────────────────
+
+    /** Navigate to the Dashboard page via the sidebar link. */
     public void navigateToDashboard() {
-        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].click();", driver.findElement(dashboardLink));
+        jsClick(dashboardLink);
     }
 
+    /** Navigate to the Employees Roster via the sidebar link. */
     public void navigateToEmployees() {
-        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].click();", driver.findElement(employeesLink));
+        jsClick(employeesLink);
     }
 
+    /** Navigate to the Projects page via the sidebar link. */
     public void navigateToProjects() {
-        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].click();", driver.findElement(projectsLink));
+        jsClick(projectsLink);
     }
 
+    /** Navigate to the Helpdesk (Queries) page via the sidebar link. */
     public void navigateToHelpdesk() {
-        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].click();", driver.findElement(helpdeskLink));
+        jsClick(helpdeskLink);
     }
 
+    /** Navigate to the Add Employee form via the sidebar link. */
     public void navigateToAddEmployee() {
-        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].click();", driver.findElement(addEmployeeLink));
+        jsClick(addEmployeeLink);
     }
 
+    /** Click the Sign Out button in the sidebar. */
     public void signOut() {
-        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].click();", driver.findElement(signOutBtn));
+        jsClick(signOutBtn);
     }
 }

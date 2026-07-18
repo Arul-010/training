@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="7" passed="7" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-07-18T11:04:17 IST" name="Employee Automation Suite" finished-at="2026-07-18T11:08:06 IST" duration-ms="228876">
+    <groups>
+    </groups>
+    <test started-at="2026-07-18T11:04:17 IST" name="Login Tests" finished-at="2026-07-18T11:08:06 IST" duration-ms="228876">
+      <class name="com.employee.automation.tests.ProjectsTest">
+        <test-method signature="testProjectLifecycle()[pri:0, instance:com.employee.automation.tests.ProjectsTest@4c9f8c13]" started-at="2026-07-18T11:06:20 IST" name="testProjectLifecycle" finished-at="2026-07-18T11:06:55 IST" duration-ms="34779" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testProjectLifecycle -->
+      </class> <!-- com.employee.automation.tests.ProjectsTest -->
+      <class name="com.employee.automation.tests.QueriesTest">
+        <test-method signature="testManageQueriesAndLeaves()[pri:0, instance:com.employee.automation.tests.QueriesTest@5ae50ce6]" started-at="2026-07-18T11:06:55 IST" name="testManageQueriesAndLeaves" finished-at="2026-07-18T11:07:17 IST" duration-ms="22464" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testManageQueriesAndLeaves -->
+      </class> <!-- com.employee.automation.tests.QueriesTest -->
+      <class name="com.employee.automation.tests.DashboardTest">
+        <test-method signature="testAdminDashboard()[pri:0, instance:com.employee.automation.tests.DashboardTest@49b0b76]" started-at="2026-07-18T11:04:19 IST" name="testAdminDashboard" finished-at="2026-07-18T11:04:39 IST" duration-ms="20050" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAdminDashboard -->
+      </class> <!-- com.employee.automation.tests.DashboardTest -->
+      <class name="com.employee.automation.tests.EmployeePortalTest">
+        <test-method signature="testEmployeePortalActions()[pri:0, instance:com.employee.automation.tests.EmployeePortalTest@6f96c77]" started-at="2026-07-18T11:07:17 IST" name="testEmployeePortalActions" finished-at="2026-07-18T11:08:06 IST" duration-ms="48622" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEmployeePortalActions -->
+      </class> <!-- com.employee.automation.tests.EmployeePortalTest -->
+      <class name="com.employee.automation.tests.EmployeeRosterTest">
+        <test-method signature="testEmployeeLifecycle()[pri:0, instance:com.employee.automation.tests.EmployeeRosterTest@769f71a9]" started-at="2026-07-18T11:04:39 IST" name="testEmployeeLifecycle" finished-at="2026-07-18T11:06:20 IST" duration-ms="100751" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEmployeeLifecycle -->
+      </class> <!-- com.employee.automation.tests.EmployeeRosterTest -->
+      <class name="com.employee.automation.tests.LoginTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.employee.automation.tests.LoginTest@1d119efb]" started-at="2026-07-18T11:04:15 IST" name="setUp" finished-at="2026-07-18T11:04:17 IST" duration-ms="1907" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="adminLogin()[pri:0, instance:com.employee.automation.tests.LoginTest@1d119efb]" started-at="2026-07-18T11:04:17 IST" name="adminLogin" finished-at="2026-07-18T11:04:18 IST" duration-ms="1124" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- adminLogin -->
+        <test-method signature="employeeLogin()[pri:0, instance:com.employee.automation.tests.LoginTest@1d119efb]" started-at="2026-07-18T11:04:18 IST" name="employeeLogin" finished-at="2026-07-18T11:04:19 IST" duration-ms="1030" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- employeeLogin -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.employee.automation.tests.LoginTest@1d119efb]" started-at="2026-07-18T11:08:06 IST" name="tearDown" finished-at="2026-07-18T11:08:09 IST" duration-ms="3592" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.employee.automation.tests.LoginTest -->
+    </test> <!-- Login Tests -->
+  </suite> <!-- Employee Automation Suite -->
+</testng-results>

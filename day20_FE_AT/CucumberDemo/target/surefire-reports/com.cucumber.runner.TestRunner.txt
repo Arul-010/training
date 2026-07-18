@@ -1,86 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: com.cucumber.runner.TestRunner
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 129.6 s <<< FAILURE! -- in com.cucumber.runner.TestRunner
-Employee Management System Verification.Employee Lifecycle (Roster CRUD) -- Time elapsed: 33.42 s <<< ERROR!
-org.openqa.selenium.NoSuchSessionException: 
-invalid session id: session deleted as the browser has closed the connection
-from disconnected: not connected to DevTools
-  (Session info: chrome=150.0.7871.125)
-Build info: version: '4.45.0', revision: 'cd6a3cd cd6a3cdfca6970f62e5bc8344109d0fe0e2af05e'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '25.0.3'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [ffa61595d5b20ce9e25d5c64b6188706, findElement {value=status, using=id}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 150.0.7871.125, chrome: {chromedriverVersion: 150.0.7871.124 (9261fd0a595..., userDataDir: C:\Users\ARULSE~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58389}, goog:processID: 29360, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58389/devtoo..., se:cdpVersion: 150.0.7871.125, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: ffa61595d5b20ce9e25d5c64b6188706
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:169)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:143)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:196)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:217)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:575)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:173)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:396)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:390)
-	at com.employee.automation.pages.EmployeeFormPage.selectStatus(EmployeeFormPage.java:106)
-	at com.cucumber.testdefinitions.EmployeeManagementSteps.user_edits_employee_details(EmployeeManagementSteps.java:172)
-	at ✽.User edits employee details to status "On Leave" and salary "130000"(file:///C:/Users/ARUL%20SELVAM/OneDrive/Documents/frontend/CucumberDemo/src/test/resources/features/EmployeeManagement.feature:28)
-
-Employee Management System Verification.Project Lifecycle -- Time elapsed: 3.714 s <<< ERROR!
-org.openqa.selenium.NoSuchSessionException: 
-invalid session id: session deleted as the browser has closed the connection
-from disconnected: not connected to DevTools
-  (Session info: chrome=150.0.7871.125)
-Build info: version: '4.45.0', revision: 'cd6a3cd cd6a3cdfca6970f62e5bc8344109d0fe0e2af05e'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '25.0.3'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [3f9e462b1487f2afb4b1cf6101590095, findElement {value=//button[contains(text(),'Administrator')], using=xpath}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 150.0.7871.125, chrome: {chromedriverVersion: 150.0.7871.124 (9261fd0a595..., userDataDir: C:\Users\ARULSE~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61246}, goog:processID: 28788, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61246/devtoo..., se:cdpVersion: 150.0.7871.125, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 3f9e462b1487f2afb4b1cf6101590095
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:169)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:143)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:196)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:217)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:575)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:173)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:396)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:390)
-	at com.employee.automation.pages.LoginPage.loginAsAdmin(LoginPage.java:31)
-	at com.cucumber.testdefinitions.EmployeeManagementSteps.user_logs_in_as_admin(EmployeeManagementSteps.java:50)
-	at ✽.User logs in as Admin(file:///C:/Users/ARUL%20SELVAM/OneDrive/Documents/frontend/CucumberDemo/src/test/resources/features/EmployeeManagement.feature:36)
-
-Employee Management System Verification.Employee Portal Actions -- Time elapsed: 31.37 s <<< ERROR!
-org.openqa.selenium.NoSuchSessionException: 
-invalid session id: session deleted as the browser has closed the connection
-from disconnected: not connected to DevTools
-  (Session info: chrome=150.0.7871.125)
-Build info: version: '4.45.0', revision: 'cd6a3cd cd6a3cdfca6970f62e5bc8344109d0fe0e2af05e'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '25.0.3'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [32aa206b3830f66e2407179433781d4e, findElement {value=//form[contains(@class,'portal-chat-input-bar')]/input, using=xpath}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 150.0.7871.125, chrome: {chromedriverVersion: 150.0.7871.124 (9261fd0a595..., userDataDir: C:\Users\ARULSE~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55943}, goog:processID: 20372, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:55943/devtoo..., se:cdpVersion: 150.0.7871.125, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 32aa206b3830f66e2407179433781d4e
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:169)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:143)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:196)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:217)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:575)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:173)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:396)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:390)
-	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:222)
-	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:215)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:210)
-	at com.employee.automation.pages.EmployeePortalPage.waitForElement(EmployeePortalPage.java:20)
-	at com.employee.automation.pages.EmployeePortalPage.sendChatMessage(EmployeePortalPage.java:184)
-	at com.cucumber.testdefinitions.EmployeeManagementSteps.user_sends_chat_message(EmployeeManagementSteps.java:346)
-	at ✽.User sends chat message "Testing team chat functionality: Hello team!"(file:///C:/Users/ARUL%20SELVAM/OneDrive/Documents/frontend/CucumberDemo/src/test/resources/features/EmployeeManagement.feature:67)
+Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 167.5 s <<< FAILURE! -- in com.cucumber.runner.TestRunner
+Employee Management System Verification.Employee Portal Actions -- Time elapsed: 29.21 s <<< FAILURE!
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.cucumber.testdefinitions.EmployeeManagementSteps.task_progress_should_contain(EmployeeManagementSteps.java:363)
+	at ✽.Task 0 progress should contain "95%"(file:///C:/Users/ARUL%20SELVAM/OneDrive/Documents/frontend/day20_FE_AT/CucumberDemo/src/test/resources/features/EmployeeManagement.feature:70)
 

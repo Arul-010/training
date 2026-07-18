@@ -1,234 +1,346 @@
 package com.employee.automation.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import java.time.Duration;
+import org.openqa.selenium.support.FindBy;
 
-public class EmployeePortalPage {
+/**
+ * Page Object for the Employee Self-Service Portal page (/portal).
+ *
+ * <p>The portal has several sub-tabs (Dashboard, Users, Projects, Team,
+ * Tasks, Application) and two modal forms (Apply Leave, Submit Query).
+ * It also exposes profile editing and, on the Projects/Tasks tabs,
+ * chat messaging and task-progress update actions.</p>
+ */
+public class EmployeePortalPage extends BasePage {
 
-    private final WebDriver driver;
+    // ── @FindBy — Sub-Tab Navigation ──────────────────────────────────────────
+
+    @FindBy(xpath = "//a[contains(@href,'/portal') and not(contains(@href,'tab'))]")
+    private WebElement dashboardTabLink;
+
+    @FindBy(xpath = "//a[contains(@href,'tab=users')]")
+    private WebElement usersTabLink;
+
+    @FindBy(xpath = "//a[contains(@href,'tab=projects')]")
+    private WebElement projectsTabLink;
+
+    @FindBy(xpath = "//a[contains(@href,'tab=team')]")
+    private WebElement teamTabLink;
+
+    @FindBy(xpath = "//a[contains(@href,'tab=tasks')]")
+    private WebElement tasksTabLink;
+
+    @FindBy(xpath = "//a[contains(@href,'tab=application')]")
+    private WebElement applicationTabLink;
+
+    // ── @FindBy — New Entry Modal Trigger ─────────────────────────────────────
+
+    @FindBy(className = "new-entry-btn")
+    private WebElement newEntryBtn;
+
+    // ── @FindBy — Modal Tab Switchers ─────────────────────────────────────────
+
+    @FindBy(xpath = "//button[contains(@class,'modal-tab-btn') and contains(.,'Apply Leave')]")
+    private WebElement applyLeaveModalTab;
+
+    @FindBy(xpath = "//button[contains(@class,'modal-tab-btn') and contains(.,'Submit Query')]")
+    private WebElement submitQueryModalTab;
+
+    // ── @FindBy — Leave Form ───────────────────────────────────────────────────
+
+    @FindBy(xpath = "//label[text()='Start Date']/following-sibling::input")
+    private WebElement leaveStartDate;
+
+    @FindBy(xpath = "//label[text()='End Date']/following-sibling::input")
+    private WebElement leaveEndDate;
+
+    @FindBy(xpath =
+        "//form[@class='modal-interactive-form'" +
+        " and .//h4[contains(text(),'Off-Duty')]]//textarea")
+    private WebElement leaveReason;
+
+    @FindBy(xpath =
+        "//form[@class='modal-interactive-form'" +
+        " and .//h4[contains(text(),'Off-Duty')]]//button[@type='submit']")
+    private WebElement leaveSubmitBtn;
+
+    // ── @FindBy — Query Form ───────────────────────────────────────────────────
+
+    @FindBy(xpath =
+        "//form[@class='modal-interactive-form'" +
+        " and .//h4[contains(text(),'Query Ticket')]]//input[@type='text']")
+    private WebElement querySubject;
+
+    @FindBy(xpath =
+        "//form[@class='modal-interactive-form'" +
+        " and .//h4[contains(text(),'Query Ticket')]]//textarea")
+    private WebElement queryMessage;
+
+    @FindBy(xpath =
+        "//form[@class='modal-interactive-form'" +
+        " and .//h4[contains(text(),'Query Ticket')]]//button[@type='submit']")
+    private WebElement querySubmitBtn;
+
+    // ── @FindBy — Profile Section ──────────────────────────────────────────────
+
+    @FindBy(className = "edit-profile-btn")
+    private WebElement editProfileBtn;
+
+    @FindBy(xpath = "//label[text()='FULL NAME']/following-sibling::input")
+    private WebElement editNameInput;
+
+    @FindBy(xpath = "//label[text()='EMAIL ADDRESS']/following-sibling::input")
+    private WebElement editEmailInput;
+
+    @FindBy(xpath = "//label[text()='PHONE NUMBER']/following-sibling::input")
+    private WebElement editPhoneInput;
+
+    @FindBy(xpath = "//label[text()='DATE OF BIRTH']/following-sibling::input")
+    private WebElement editDobInput;
+
+    @FindBy(xpath = "//button[text()='Save Changes']")
+    private WebElement saveChangesBtn;
+
+    @FindBy(className = "user-profile-display-name")
+    private WebElement profileDisplayName;
+
+    @FindBy(xpath =
+        "//div[contains(@class,'info-attribute-row')" +
+        " and .//span[text()='Email Address']]/strong")
+    private WebElement profileEmail;
+
+    @FindBy(xpath =
+        "//div[contains(@class,'info-attribute-row')" +
+        " and .//span[text()='Phone Number']]/strong")
+    private WebElement profilePhone;
+
+    // ── @FindBy — Chat ─────────────────────────────────────────────────────────
+
+    @FindBy(xpath = "//form[contains(@class,'portal-chat-input-bar')]/input")
+    private WebElement chatInput;
+
+    @FindBy(xpath = "//form[contains(@class,'portal-chat-input-bar')]/button[@type='submit']")
+    private WebElement chatSendBtn;
+
+    // ── Constructor ────────────────────────────────────────────────────────────
 
     public EmployeePortalPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
-    private WebElement waitForElement(By locator) {
-        return new WebDriverWait(driver, Duration.ofSeconds(10))
-            .until(ExpectedConditions.visibilityOfElementLocated(locator));
-    }
+    // ── Sub-Tab Navigation ─────────────────────────────────────────────────────
 
-    // Tab links
-    private final By dashboardTabLink = By.xpath("//a[contains(@href, '/portal') and not(contains(@href, 'tab'))]");
-    private final By usersTabLink = By.xpath("//a[contains(@href, 'tab=users')]");
-    private final By projectsTabLink = By.xpath("//a[contains(@href, 'tab=projects')]");
-    private final By teamTabLink = By.xpath("//a[contains(@href, 'tab=team')]");
-    private final By tasksTabLink = By.xpath("//a[contains(@href, 'tab=tasks')]");
-    private final By applicationTabLink = By.xpath("//a[contains(@href, 'tab=application')]");
+    /** Navigate to the Portal Dashboard sub-tab. */
+    public void navigateToDashboard() { jsClick(dashboardTabLink); }
 
-    // NEW ENTRY triggers
-    private final By newEntryBtn = By.className("new-entry-btn");
+    /** Navigate to the Users sub-tab. */
+    public void navigateToUsers() { jsClick(usersTabLink); }
 
-    // Modal switch buttons
-    private final By applyLeaveModalTab = By.xpath("//button[contains(@class, 'modal-tab-btn') and contains(., 'Apply Leave')]");
-    private final By submitQueryModalTab = By.xpath("//button[contains(@class, 'modal-tab-btn') and contains(., 'Submit Query')]");
+    /** Navigate to the Projects sub-tab. */
+    public void navigateToProjects() { jsClick(projectsTabLink); }
 
-    // Leave form fields
-    private final By leaveStartDate = By.xpath("//label[text()='Start Date']/following-sibling::input");
-    private final By leaveEndDate = By.xpath("//label[text()='End Date']/following-sibling::input");
-    private final By leaveReason = By.xpath("//form[@class='modal-interactive-form' and .//h4[contains(text(), 'Off-Duty')]]//textarea");
-    private final By leaveSubmitBtn = By.xpath("//form[@class='modal-interactive-form' and .//h4[contains(text(), 'Off-Duty')]]//button[@type='submit']");
+    /** Navigate to the Team sub-tab. */
+    public void navigateToTeam() { jsClick(teamTabLink); }
 
-    // Query form fields
-    private final By querySubject = By.xpath("//form[@class='modal-interactive-form' and .//h4[contains(text(), 'Query Ticket')]]//input[@type='text']");
-    private final By queryMessage = By.xpath("//form[@class='modal-interactive-form' and .//h4[contains(text(), 'Query Ticket')]]//textarea");
-    private final By querySubmitBtn = By.xpath("//form[@class='modal-interactive-form' and .//h4[contains(text(), 'Query Ticket')]]//button[@type='submit']");
+    /** Navigate to the Tasks sub-tab. */
+    public void navigateToTasks() { jsClick(tasksTabLink); }
 
-    public void navigateToDashboard() {
-        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].click();", driver.findElement(dashboardTabLink));
-    }
+    /** Navigate to the My Application sub-tab. */
+    public void navigateToApplication() { jsClick(applicationTabLink); }
 
-    public void navigateToUsers() {
-        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].click();", driver.findElement(usersTabLink));
-    }
+    // ── Modal Trigger ──────────────────────────────────────────────────────────
 
-    public void navigateToProjects() {
-        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].click();", driver.findElement(projectsTabLink));
-    }
-
-    public void navigateToTeam() {
-        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].click();", driver.findElement(teamTabLink));
-    }
-
-    public void navigateToTasks() {
-        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].click();", driver.findElement(tasksTabLink));
-    }
-
-    public void navigateToApplication() {
-        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].click();", driver.findElement(applicationTabLink));
-    }
-
+    /** Click "New Entry" to open the apply-leave / submit-query modal. */
     public void clickNewEntry() {
-        waitForElement(newEntryBtn).click();
+        waitForClickable(newEntryBtn).click();
     }
 
+    /** Inside the modal, switch to the "Apply Leave" form tab. */
     public void selectApplyLeaveModalTab() {
-        waitForElement(applyLeaveModalTab).click();
+        waitForClickable(applyLeaveModalTab).click();
     }
 
+    /** Inside the modal, switch to the "Submit Query" form tab. */
     public void selectSubmitQueryModalTab() {
-        waitForElement(submitQueryModalTab).click();
+        waitForClickable(submitQueryModalTab).click();
     }
 
+    // ── Leave Form ─────────────────────────────────────────────────────────────
+
+    /**
+     * Fill the Leave application form and submit it.
+     *
+     * @param startDate ISO date e.g. "2026-08-01"
+     * @param endDate   ISO date e.g. "2026-08-05"
+     * @param reason    leave reason text
+     */
     public void submitLeave(String startDate, String endDate, String reason) {
-        WebElement startInput = waitForElement(leaveStartDate);
-        startInput.clear();
-        startInput.sendKeys(startDate);
+        jsSetValue(waitForVisible(leaveStartDate), startDate);
+        jsSetValue(waitForVisible(leaveEndDate), endDate);
 
-        WebElement endInput = waitForElement(leaveEndDate);
-        endInput.clear();
-        endInput.sendKeys(endDate);
+        WebElement reasonEl = waitForVisible(leaveReason);
+        reasonEl.clear();
+        reasonEl.sendKeys(reason);
 
-        WebElement reasonInput = waitForElement(leaveReason);
-        reasonInput.clear();
-        reasonInput.sendKeys(reason);
-
-        waitForElement(leaveSubmitBtn).click();
+        waitForClickable(leaveSubmitBtn).click();
     }
 
+    // ── Query Form ─────────────────────────────────────────────────────────────
+
+    /**
+     * Fill the Query Ticket form and submit it.
+     *
+     * @param subject short ticket subject
+     * @param message detailed message body
+     */
     public void submitQuery(String subject, String message) {
-        WebElement subjectInput = waitForElement(querySubject);
-        subjectInput.clear();
-        subjectInput.sendKeys(subject);
+        WebElement subjEl = waitForVisible(querySubject);
+        subjEl.clear();
+        subjEl.sendKeys(subject);
 
-        WebElement messageInput = waitForElement(queryMessage);
-        messageInput.clear();
-        messageInput.sendKeys(message);
+        WebElement msgEl = waitForVisible(queryMessage);
+        msgEl.clear();
+        msgEl.sendKeys(message);
 
-        waitForElement(querySubmitBtn).click();
+        waitForClickable(querySubmitBtn).click();
     }
 
+    // ── Attendance ─────────────────────────────────────────────────────────────
+
+    /**
+     * Click "Active Today" attendance button if it is present on the page.
+     * Safe to call even when the button is absent.
+     */
     public void confirmAttendance() {
-        try {
-            By activeBtn = By.className("active-today");
-            if (driver.findElements(activeBtn).size() > 0) {
-                driver.findElement(activeBtn).click();
-            }
-        } catch (Exception e) {
-            // Modal not present
-        }
+        List<WebElement> btns = driver.findElements(By.className("active-today"));
+        if (!btns.isEmpty()) btns.get(0).click();
     }
 
-    // Edit profile actions
-    private final By editProfileBtn = By.className("edit-profile-btn");
-    private final By editNameInput = By.xpath("//label[text()='FULL NAME']/following-sibling::input");
-    private final By editEmailInput = By.xpath("//label[text()='EMAIL ADDRESS']/following-sibling::input");
-    private final By editPhoneInput = By.xpath("//label[text()='PHONE NUMBER']/following-sibling::input");
-    private final By editDobInput = By.xpath("//label[text()='DATE OF BIRTH']/following-sibling::input");
-    private final By saveChangesBtn = By.xpath("//button[text()='Save Changes']");
+    // ── Profile Editing ────────────────────────────────────────────────────────
 
+    /** Click the "Edit Profile" button to enter edit mode. */
     public void clickEditProfile() {
-        waitForElement(editProfileBtn).click();
+        waitForClickable(editProfileBtn).click();
     }
 
-    private void setDateViaJS(WebElement element, String dateValue) {
-        org.openqa.selenium.JavascriptExecutor js = (org.openqa.selenium.JavascriptExecutor) driver;
-        js.executeScript(
-            "var nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set; " +
-            "nativeInputValueSetter.call(arguments[0], arguments[1]); " +
-            "arguments[0].dispatchEvent(new Event('input', { bubbles: true })); " +
-            "arguments[0].dispatchEvent(new Event('change', { bubbles: true }));", 
-            element, dateValue
-        );
-    }
-
-    public void updateProfileDetails(String name, String email, String phone, String dob) {
-        WebElement nameEl = waitForElement(editNameInput);
+    /**
+     * Update the four editable profile fields and save.
+     *
+     * @param name  new full name
+     * @param email new email address
+     * @param phone new phone number
+     * @param dob   new date of birth as ISO date e.g. "1998-05-15"
+     */
+    public void updateProfileDetails(String name, String email,
+                                     String phone, String dob) {
+        WebElement nameEl = waitForVisible(editNameInput);
         nameEl.clear();
         nameEl.sendKeys(name);
 
-        WebElement emailEl = waitForElement(editEmailInput);
+        WebElement emailEl = waitForVisible(editEmailInput);
         emailEl.clear();
         emailEl.sendKeys(email);
 
-        WebElement phoneEl = waitForElement(editPhoneInput);
+        WebElement phoneEl = waitForVisible(editPhoneInput);
         phoneEl.clear();
         phoneEl.sendKeys(phone);
 
-        WebElement dobEl = waitForElement(editDobInput);
-        setDateViaJS(dobEl, dob);
+        jsSetValue(waitForVisible(editDobInput), dob);
 
-        waitForElement(saveChangesBtn).click();
+        waitForClickable(saveChangesBtn).click();
     }
 
+    // ── Profile Getters ────────────────────────────────────────────────────────
+
+    /** @return the employee's display name shown on the profile card. */
     public String getProfileDisplayName() {
-        return waitForElement(By.className("user-profile-display-name")).getText();
+        return waitForVisible(profileDisplayName).getText();
     }
 
+    /** @return the email shown in the profile info attributes. */
     public String getProfileEmail() {
-        return waitForElement(By.xpath("//div[contains(@class,'info-attribute-row') and .//span[text()='Email Address']]/strong")).getText();
+        return waitForVisible(profileEmail).getText();
     }
 
+    /** @return the phone number shown in the profile info attributes. */
     public String getProfilePhone() {
-        return waitForElement(By.xpath("//div[contains(@class,'info-attribute-row') and .//span[text()='Phone Number']]/strong")).getText();
+        return waitForVisible(profilePhone).getText();
     }
 
-    // Projects actions
-    private final By chatInput = By.xpath("//form[contains(@class,'portal-chat-input-bar')]/input");
-    private final By chatSendBtn = By.xpath("//form[contains(@class,'portal-chat-input-bar')]/button[@type='submit']");
-    private final By chatMessageBubbles = By.className("chat-message-row");
+    // ── Chat ───────────────────────────────────────────────────────────────────
 
+    /**
+     * Type a message in the chat input bar and click Send.
+     *
+     * @param message message text to send
+     */
     public void sendChatMessage(String message) {
-        WebElement input = waitForElement(chatInput);
-        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", input);
-        try { Thread.sleep(500); } catch (Exception ignored) {}
+        WebElement input = waitForVisible(chatInput);
+        scrollIntoView(input);
         input.clear();
         input.sendKeys(message);
-        WebElement sendBtn = waitForElement(chatSendBtn);
-        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", sendBtn);
-        sendBtn.click();
+
+        WebElement send = waitForClickable(chatSendBtn);
+        scrollIntoView(send);
+        send.click();
     }
 
+    /**
+     * @return the text of the last chat bubble in the conversation,
+     *         or {@code ""} if no messages are present.
+     */
     public String getLastChatMessageText() {
-        java.util.List<WebElement> messages = driver.findElements(chatMessageBubbles);
-        if (!messages.isEmpty()) {
-            WebElement lastMsg = messages.get(messages.size() - 1);
-            return lastMsg.findElement(By.className("chat-sender-text")).getText();
-        }
-        return "";
+        List<WebElement> bubbles =
+                driver.findElements(By.className("chat-message-row"));
+        if (bubbles.isEmpty()) return "";
+        return bubbles.get(bubbles.size() - 1)
+                      .findElement(By.className("chat-sender-text"))
+                      .getText();
     }
 
+    // ── Task Progress ──────────────────────────────────────────────────────────
+
+    /**
+     * Update the progress slider for the task at {@code taskIndex}
+     * (0-based, among tasks assigned to the current user) and click Save.
+     *
+     * @param taskIndex 0-based index in the "assigned to me" task list
+     * @param progress  percentage value 0–100
+     */
     public void updateTaskProgress(int taskIndex, int progress) {
-        java.util.List<WebElement> tasks = driver.findElements(By.cssSelector(".portal-task-item.assigned-me"));
-        if (taskIndex < tasks.size()) {
-            WebElement task = tasks.get(taskIndex);
-            WebElement slider = task.findElement(By.className("progress-range-slider"));
-            ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", slider);
-            try { Thread.sleep(500); } catch (Exception ignored) {}
-            ((org.openqa.selenium.JavascriptExecutor) driver).executeScript(
-                "arguments[0].value = arguments[1]; arguments[0].dispatchEvent(new Event('input', { bubbles: true })); arguments[0].dispatchEvent(new Event('change', { bubbles: true }));", 
-                slider, progress
-            );
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-            WebElement saveBtn = task.findElement(By.className("update-progress-btn"));
-            ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", saveBtn);
-            try { Thread.sleep(500); } catch (Exception ignored) {}
-            saveBtn.click();
+        List<WebElement> tasks = driver.findElements(
+                By.cssSelector(".portal-task-item.assigned-me"));
+        if (taskIndex >= tasks.size()) return;
+
+        WebElement task   = tasks.get(taskIndex);
+        WebElement slider = task.findElement(By.className("progress-range-slider"));
+        scrollIntoView(slider);
+        jsSetValue(slider, String.valueOf(progress));
+
+        try { Thread.sleep(1000); } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
         }
+
+        WebElement saveBtn = task.findElement(By.className("update-progress-btn"));
+        scrollIntoView(saveBtn);
+        saveBtn.click();
     }
 
+    /**
+     * @param taskIndex 0-based index in the "assigned to me" task list
+     * @return the progress percentage label text (e.g. "75%"),
+     *         or {@code ""} if the task is not found.
+     */
     public String getTaskProgressPercent(int taskIndex) {
-        java.util.List<WebElement> tasks = driver.findElements(By.cssSelector(".portal-task-item.assigned-me"));
-        if (taskIndex < tasks.size()) {
-            WebElement task = tasks.get(taskIndex);
-            return task.findElement(By.className("progress-lbl")).getText();
-        }
-        return "";
+        List<WebElement> tasks = driver.findElements(
+                By.cssSelector(".portal-task-item.assigned-me"));
+        if (taskIndex >= tasks.size()) return "";
+        return tasks.get(taskIndex)
+                    .findElement(By.className("progress-lbl"))
+                    .getText();
     }
 }

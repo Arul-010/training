@@ -81,7 +81,7 @@ const EmployeeForm = () => {
           email: emp.email || '',
           phone: emp.phone || '',
           department: emp.department || '',
-          role: emp.role || '',
+          role: emp.designation || emp.role || '',
           salary: emp.salary || '',
           joinDate: emp.joinDate || '',
           dob: emp.dob || '',
@@ -185,12 +185,14 @@ const EmployeeForm = () => {
     if (isEditMode) {
       await updateEmployee(id, {
         ...formData,
+        designation: formData.role,
         salary: Number(formData.salary)
       });
       navigate(`/employees/${id}`);
     } else {
       const newEmployee = {
         ...formData,
+        designation: formData.role,
         id: generateEmployeeId(),
         salary: Number(formData.salary),
         avatar: `https://api.dicebear.com/7.x/adventurer/svg?seed=${formData.name}`

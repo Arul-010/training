@@ -1,86 +1,158 @@
 package com.employee.automation.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class EmployeeDetailsPage {
+/**
+ * Page Object for the Employee Details page (/employees/:id).
+ *
+ * <p>Covers the profile header (name, status badge, role, ID), the
+ * info-grid fields (email, phone, DOB, department, salary, join date),
+ * and the action buttons (Edit Details, Delete Profile, Back to Roster).</p>
+ */
+public class EmployeeDetailsPage extends BasePage {
 
-    private final WebDriver driver;
+    // ── @FindBy — Header ───────────────────────────────────────────────────────
+
+    /** Full name heading at the top of the profile card. */
+    @FindBy(className = "details-full-name")
+    private WebElement fullName;
+
+    /** Status badge/pill showing Active / On Leave / Terminated. */
+    @FindBy(className = "status-pill")
+    private WebElement statusBadge;
+
+    /** Role / designation line in the header. */
+    @FindBy(className = "details-role-display")
+    private WebElement roleDisplay;
+
+    /** Employee ID line in the header. */
+    @FindBy(className = "details-id-display")
+    private WebElement idDisplay;
+
+    // ── @FindBy — Info Grid (Personal & Contact) ───────────────────────────────
+
+    @FindBy(xpath =
+        "//div[span[text()='Email Address']]/*[contains(@class,'info-value')]")
+    private WebElement emailValue;
+
+    @FindBy(xpath =
+        "//div[span[text()='Phone Number']]/*[contains(@class,'info-value')]")
+    private WebElement phoneValue;
+
+    @FindBy(xpath =
+        "//div[span[text()='Date of Birth (D.O.B)']]/*[contains(@class,'info-value')]")
+    private WebElement dobValue;
+
+    // ── @FindBy — Info Grid (Employment) ──────────────────────────────────────
+
+    @FindBy(xpath =
+        "//div[span[text()='Department']]/*[contains(@class,'info-value')]")
+    private WebElement deptValue;
+
+    @FindBy(xpath =
+        "//div[span[text()='Salary (Annual)']]//*[contains(@class,'info-value')]")
+    private WebElement salaryValue;
+
+    @FindBy(xpath =
+        "//div[span[text()='Join Date']]/*[contains(@class,'info-value')]")
+    private WebElement joinDateValue;
+
+    // ── @FindBy — Action Buttons ───────────────────────────────────────────────
+
+    @FindBy(xpath = "//button[contains(.,'Edit Details')]")
+    private WebElement editDetailsBtn;
+
+    @FindBy(xpath = "//button[contains(.,'Delete Profile')]")
+    private WebElement deleteProfileBtn;
+
+    @FindBy(xpath = "//button[contains(.,'Back to Roster')]")
+    private WebElement backToRosterBtn;
+
+    // ── Constructor ────────────────────────────────────────────────────────────
 
     public EmployeeDetailsPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
-    // Locators
-    private final By backToRosterBtn = By.xpath("//button[contains(., 'Back to Roster')]");
-    
-    // Header Info
-    private final By fullName = By.className("details-full-name");
-    private final By statusBadge = By.className("status-pill");
-    private final By roleDisplay = By.className("details-role-display");
-    private final By idDisplay = By.className("details-id-display");
-    
-    // Detail rows
-    private final By emailValue = By.xpath("//div[span[text()='Email Address']]/*[contains(@class,'info-value')]");
-    private final By phoneValue = By.xpath("//div[span[text()='Phone Number']]/*[contains(@class,'info-value')]");
-    private final By dobValue = By.xpath("//div[span[text()='Date of Birth (D.O.B)']]/*[contains(@class,'info-value')]");
-    private final By deptValue = By.xpath("//div[span[text()='Department']]/*[contains(@class,'info-value')]");
-    private final By salaryValue = By.xpath("//div[span[text()='Salary (Annual)']]/*[contains(@class,'info-value')]");
-    private final By joinDateValue = By.xpath("//div[span[text()='Join Date']]/*[contains(@class,'info-value')]");
+    // ── Header Getters ─────────────────────────────────────────────────────────
 
-    // Action buttons
-    private final By editDetailsBtn = By.xpath("//button[contains(., 'Edit Details')]");
-    private final By deleteProfileBtn = By.xpath("//button[contains(., 'Delete Profile')]");
-
-    public void clickBackToRoster() {
-        driver.findElement(backToRosterBtn).click();
-    }
-
+    /** @return the employee's full name from the profile header. */
     public String getFullName() {
-        return driver.findElement(fullName).getText();
+        return waitForVisible(fullName).getText();
     }
 
+    /**
+     * @return the status badge text (e.g. "Active", "On Leave",
+     *         "Terminated") from the profile header.
+     */
     public String getStatus() {
-        return driver.findElement(statusBadge).getText();
+        return waitForVisible(statusBadge).getText();
     }
 
+    /** @return the role / designation text from the profile header. */
     public String getRole() {
-        return driver.findElement(roleDisplay).getText();
+        return waitForVisible(roleDisplay).getText();
     }
 
+    /** @return the employee ID (e.g. "EMP-1234") from the profile header. */
     public String getId() {
-        return driver.findElement(idDisplay).getText();
+        return waitForVisible(idDisplay).getText();
     }
 
+    // ── Info Grid Getters ──────────────────────────────────────────────────────
+
+    /** @return the email address from the info grid. */
     public String getEmail() {
-        return driver.findElement(emailValue).getText();
+        return waitForVisible(emailValue).getText();
     }
 
+    /** @return the phone number from the info grid. */
     public String getPhone() {
-        return driver.findElement(phoneValue).getText();
+        return waitForVisible(phoneValue).getText();
     }
 
+    /** @return the formatted date of birth from the info grid. */
     public String getDob() {
-        return driver.findElement(dobValue).getText();
+        return waitForVisible(dobValue).getText();
     }
 
+    /** @return the department name from the info grid. */
     public String getDepartment() {
-        return driver.findElement(deptValue).getText();
+        return waitForVisible(deptValue).getText();
     }
 
+    /**
+     * @return the formatted annual salary (e.g. "$120,000") from
+     *         the info grid.
+     */
     public String getSalary() {
-        return driver.findElement(salaryValue).getText();
+        return waitForVisible(salaryValue).getText();
     }
 
+    /** @return the formatted join date from the info grid. */
     public String getJoinDate() {
-        return driver.findElement(joinDateValue).getText();
+        return waitForVisible(joinDateValue).getText();
     }
 
+    // ── Action Buttons ─────────────────────────────────────────────────────────
+
+    /** Click "Edit Details" to navigate to the edit form. */
     public void clickEditDetails() {
-        driver.findElement(editDetailsBtn).click();
+        waitForClickable(editDetailsBtn).click();
     }
 
+    /**
+     * Click "Delete Profile" to open the delete confirmation modal.
+     * Call {@link EmployeeListPage#confirmDeletion()} afterwards.
+     */
     public void clickDeleteProfile() {
-        driver.findElement(deleteProfileBtn).click();
+        waitForClickable(deleteProfileBtn).click();
+    }
+
+    /** Click "Back to Roster" to return to the employee list. */
+    public void clickBackToRoster() {
+        waitForClickable(backToRosterBtn).click();
     }
 }

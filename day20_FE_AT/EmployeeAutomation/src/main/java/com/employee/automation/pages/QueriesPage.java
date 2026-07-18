@@ -1,74 +1,135 @@
 package com.employee.automation.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import java.util.List;
+import org.openqa.selenium.support.FindBy;
 
-public class QueriesPage {
+/**
+ * Page Object for the Helpdesk / Queries page (/queries).
+ *
+ * <p>Covers two tabs:
+ * <ul>
+ *   <li><b>Helpdesk Tickets</b> — admin resolves employee support tickets</li>
+ *   <li><b>Leave Applications</b> — admin approves / rejects leave requests
+ *       and adjusts the number of approved days</li>
+ * </ul>
+ * </p>
+ */
+public class QueriesPage extends BasePage {
 
-    private final WebDriver driver;
+    // ── @FindBy — Tab Navigation ───────────────────────────────────────────────
+
+    @FindBy(xpath = "//button[contains(.,'Helpdesk Tickets')]")
+    private WebElement helpdeskTabBtn;
+
+    @FindBy(xpath = "//button[contains(.,'Leave Applications')]")
+    private WebElement leaveTabBtn;
+
+    // ── Constructor ────────────────────────────────────────────────────────────
 
     public QueriesPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
-    // Main tabs
-    private final By helpdeskTabBtn = By.xpath("//button[contains(., 'Helpdesk Tickets')]");
-    private final By leaveTabBtn = By.xpath("//button[contains(., 'Leave Applications')]");
+    // ── Tab Actions ────────────────────────────────────────────────────────────
 
+    /** Switch to the Helpdesk Tickets tab. */
     public void clickHelpdeskTab() {
-        driver.findElement(helpdeskTabBtn).click();
+        waitForClickable(helpdeskTabBtn).click();
     }
 
+    /** Switch to the Leave Applications tab. */
     public void clickLeaveTab() {
-        driver.findElement(leaveTabBtn).click();
+        waitForClickable(leaveTabBtn).click();
     }
 
-    // Helpdesk actions
+    // ── Helpdesk Ticket Actions ────────────────────────────────────────────────
+
+    /**
+     * Find the first helpdesk ticket whose subject contains {@code subject}
+     * and click its "Resolve" button.
+     *
+     * @param subject partial or full ticket subject text
+     */
     public void resolveQuery(String subject) {
-        By rowLocator = By.xpath("//div[contains(@class, 'query-admin-row') and .//h3[contains(text(), '" + subject + "')]]");
-        List<WebElement> rows = driver.findElements(rowLocator);
+        List<WebElement> rows = driver.findElements(By.xpath(
+            "//div[contains(@class,'query-admin-row')" +
+            " and .//h3[contains(text(),'" + subject + "')]]"));
         if (!rows.isEmpty()) {
-            rows.get(0).findElement(By.xpath(".//button[contains(., 'Resolve')]")).click();
+            rows.get(0)
+                .findElement(By.xpath(".//button[contains(.,'Resolve')]"))
+                .click();
         }
     }
 
-    // Leave actions
+    // ── Leave Application Accessors ────────────────────────────────────────────
+
+    /**
+     * Find and return the first leave application card for
+     * {@code employeeName}.
+     *
+     * @return the card {@link WebElement}, or {@code null} if not found
+     */
     public WebElement getLeaveCard(String employeeName) {
-        By cardLocator = By.xpath("//div[contains(@class, 'leave-card') and contains(., '" + employeeName + "')]");
-        List<WebElement> cards = driver.findElements(cardLocator);
+        List<WebElement> cards = driver.findElements(By.xpath(
+            "//div[contains(@class,'leave-card')" +
+            " and contains(.,'" + employeeName + "')]"));
         return cards.isEmpty() ? null : cards.get(0);
     }
 
+    // ── Leave Application Actions ──────────────────────────────────────────────
+
+    /**
+     * Click the "Approve" button on the leave card for {@code employeeName}.
+     */
     public void approveLeave(String employeeName) {
         WebElement card = getLeaveCard(employeeName);
         if (card != null) {
-            card.findElement(By.xpath(".//button[contains(@class, 'la-approve')]")).click();
+            card.findElement(
+                By.xpath(".//button[contains(@class,'la-approve')]")).click();
         }
     }
 
+    /**
+     * Click the "Reject" button on the leave card for {@code employeeName}.
+     */
     public void rejectLeave(String employeeName) {
         WebElement card = getLeaveCard(employeeName);
         if (card != null) {
-            card.findElement(By.xpath(".//button[contains(@class, 'la-reject')]")).click();
+            card.findElement(
+                By.xpath(".//button[contains(@class,'la-reject')]")).click();
         }
     }
 
+    /**
+     * Clear the approved-days input on the leave card for
+     * {@code employeeName} and type {@code targetDays}.
+     *
+     * @param employeeName employee whose leave card to update
+     * @param targetDays   number of approved days to enter
+     */
     public void adjustGrantDays(String employeeName, int targetDays) {
         WebElement card = getLeaveCard(employeeName);
         if (card != null) {
-            WebElement input = card.findElement(By.xpath(".//input[@aria-label='Grant days count']"));
+            WebElement input = card.findElement(
+                By.xpath(".//input[@aria-label='Grant days count']"));
             input.clear();
             input.sendKeys(String.valueOf(targetDays));
         }
     }
 
+    /**
+     * Read the status pill text on the leave card for {@code employeeName}.
+     *
+     * @return status text e.g. "Approved", "Rejected", "Pending",
+     *         or {@code null} if the card is not found
+     */
     public String getLeaveStatus(String employeeName) {
         WebElement card = getLeaveCard(employeeName);
-        if (card != null) {
-            return card.findElement(By.className("leave-status-pill")).getText();
-        }
-        return null;
+        if (card == null) return null;
+        return card.findElement(By.className("leave-status-pill")).getText();
     }
 }

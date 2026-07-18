@@ -90,25 +90,22 @@ public class EmployeeRosterTest extends BaseTest {
         formPage.clickSubmit();
         Thread.sleep(3000);
 
-        // Poll to wait for mock API edit transaction completion with page refresh
-        boolean isUpdated = false;
-        for (int i = 0; i < 10; i++) {
-            try {
-                driver.navigate().refresh();
-                Thread.sleep(3000);
-                String status = detailsPage.getStatus();
-                String salary = detailsPage.getSalary();
-                System.out.println("[DEBUG] Poll " + i + ": status='" + status + "', salary='" + salary + "'");
-                if (status.equalsIgnoreCase("On Leave") &&
-                    (salary.contains("130,000") || salary.contains("130000"))) {
-                    isUpdated = true;
-                    break;
-                }
-            } catch (Exception e) {
-                System.out.println("[DEBUG] Poll " + i + " exception: " + e.getMessage());
-            }
-        }
-        Assert.assertTrue(isUpdated, "Employee status and salary should be updated");
+        // The app uses optimistic updates: status/salary are reflected immediately
+        // after save — no page refresh needed. Refresh would break locally-created
+        // employees (EMP-timestamp IDs not in MockAPI) and cause loading spinners
+        // to hide the target elements, returning empty strings.
+        Thread.sleep(3000);
+        String status = detailsPage.getStatus();
+        String salary = detailsPage.getSalary();
+        System.out.println("[DEBUG] After edit — status='" + status + "', salary='" + salary + "'");
+        Assert.assertTrue(
+            status.equalsIgnoreCase("On Leave"),
+            "Employee status should be 'On Leave' but was: '" + status + "'"
+        );
+        Assert.assertTrue(
+            salary.contains("130,000") || salary.contains("130000"),
+            "Employee salary should contain '130,000' but was: '" + salary + "'"
+        );
 
         // Step 9: Delete employee
         detailsPage.clickDeleteProfile();
